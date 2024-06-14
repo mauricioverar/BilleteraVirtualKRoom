@@ -57,8 +57,14 @@ class DatosListAdapter :
             // texto ***********
             binding.txname.text = datos.name
             binding.txfecha.text = datos.released
-            val num = 20.00
-            binding.txdouble.text = binding.root.context.getString(R.string.valor_mas, num.toString())
+            //val num = 20.00
+            if (datos.rating > 4) {
+                binding.txdouble.text = binding.root.context.getString(R.string.valor_mas, datos.rating.toString())
+            } else {
+                binding.txdouble.text = binding.root.context.getString(R.string.valor_menos, datos.rating.toString())
+            }
+            //binding.txdouble.text = binding.root.context.getString(R.string.valor_mas, datos.rating.toString())
+
                     //binding.txdouble.text = "-$15.00"
             //binding.txdouble.text = datos.rating.toString()
 

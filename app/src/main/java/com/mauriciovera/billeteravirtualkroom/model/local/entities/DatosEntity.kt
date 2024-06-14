@@ -9,6 +9,6 @@ data class DatosEntity(
     val id: Int,
     val name: String,
     val released: String,
-    //val rating: Double,
+    val rating: Double,
     val background_image: String
 )

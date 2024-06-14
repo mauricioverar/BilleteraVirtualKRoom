@@ -9,7 +9,7 @@ fun fromInternetDatosEntity(datosList: List<DatoModel>): List<DatosEntity> {
             id = it.id,
             name = it.name,
             released = it.released,
-            //rating = it.rating,
+            rating = it.rating,
             background_image = it.background_image
         )
     }
