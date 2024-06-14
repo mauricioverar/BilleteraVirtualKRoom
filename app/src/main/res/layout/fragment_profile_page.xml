@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ProfilePageFragment">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="262dp"
+        android:background="@color/very_light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center"
+            android:text="Amanda Alkemy"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/user_oval" />
+
+        <ImageView
+            android:id="@+id/profile_picture_ek2"
+            android:layout_width="65dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:contentDescription="profile_picture_ek2"
+            android:src="@drawable/profile_picture"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/my_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal|top"
+            android:layout_marginTop="53dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center"
+            android:text="@string/my_profile_string"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="20sp"
+            tools:ignore="TextSizeCheck" />
+
+        <ImageView
+            android:id="@+id/pencil"
+            android:layout_width="15.8dp"
+            android:layout_height="15.82dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="53dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/pencil"
+            android:src="@drawable/pencil"
+            tools:ignore="RtlHardcoded" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+        <Button
+            android:id="@+id/btn_my_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/very_light_gray"
+            android:drawableLeft="@drawable/ic_user"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:fontFamily="@font/jua"
+            android:paddingVertical="12dp"
+            android:text="@string/my_info_string"
+            android:textColor="@color/black"
+            app:cornerRadius="8dp"
+            tools:ignore="RtlHardcoded,VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/btn_my_cards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/very_light_gray"
+            android:drawableLeft="@drawable/ic_card"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:fontFamily="@font/jua"
+            android:paddingVertical="12dp"
+            android:text="@string/my_cards_string"
+            android:textColor="@color/black"
+            app:cornerRadius="8dp"
+            tools:ignore="RtlHardcoded,VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/very_light_gray"
+            android:drawableLeft="@drawable/ic_settings"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:fontFamily="@font/jua"
+            android:paddingVertical="12dp"
+            android:text="@string/settings_string"
+            android:textColor="@color/black"
+            app:cornerRadius="8dp"
+            tools:ignore="RtlHardcoded,VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/btn_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/very_light_gray"
+            android:drawableLeft="@drawable/ic_help"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:fontFamily="@font/jua"
+            android:paddingVertical="12dp"
+            android:text="@string/help_center_string"
+            android:textColor="@color/black"
+            app:cornerRadius="8dp"
+            tools:ignore="RtlHardcoded,VisualLintButtonSize" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,26 +3,82 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/loginSignupPageFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.mauriciovera.billeteravirtualkroom.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/HomeFragment"
+        android:name="com.mauriciovera.billeteravirtualkroom.view.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_HomeFragment_to_sendMoneyFragment"
+            app:destination="@id/sendMoneyFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_requestMoneyFragment"
+            app:destination="@id/requestMoneyFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.mauriciovera.billeteravirtualkroom.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/loginSignupPageFragment"
+        android:name="com.mauriciovera.billeteravirtualkroom.view.LoginSignupPageFragment"
+        android:label="fragment_login_signup_page"
+        tools:layout="@layout/fragment_login_signup_page" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_loginSignupPageFragment_to_loginPageFragment"
+            app:destination="@id/loginPageFragment" />
+        <action
+            android:id="@+id/action_loginSignupPageFragment_to_signupPageFragment"
+            app:destination="@id/signupPageFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loginPageFragment"
+        android:name="com.mauriciovera.billeteravirtualkroom.view.LoginPageFragment"
+        android:label="fragment_login_page"
+        tools:layout="@layout/fragment_login_page" >
+        <action
+            android:id="@+id/action_loginPageFragment_to_signupPageFragment"
+            app:destination="@id/signupPageFragment" />
+        <action
+            android:id="@+id/action_loginPageFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_loginPageFragment_to_loginSignupPageFragment"
+            app:destination="@id/loginSignupPageFragment" />
+        <action
+            android:id="@+id/action_loginPageFragment_to_nav_graph"
+            app:destination="@id/nav_graph" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="Guest" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupPageFragment"
+        android:name="com.mauriciovera.billeteravirtualkroom.view.SignupPageFragment"
+        android:label="fragment_signup_page"
+        tools:layout="@layout/fragment_signup_page" >
+        <action
+            android:id="@+id/action_signupPageFragment_to_loginPageFragment"
+            app:destination="@id/loginPageFragment" />
+        <action
+            android:id="@+id/action_signupPageFragment_to_loginSignupPageFragment"
+            app:destination="@id/loginSignupPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendMoneyFragment"
+        android:name="com.mauriciovera.billeteravirtualkroom.view.SendMoneyFragment"
+        android:label="fragment_send_money"
+        tools:layout="@layout/fragment_send_money" />
+    <fragment
+        android:id="@+id/requestMoneyFragment"
+        android:name="com.mauriciovera.billeteravirtualkroom.view.RequestMoneyFragment"
+        android:label="fragment_request_money"
+        tools:layout="@layout/fragment_request_money" />
+    <fragment
+        android:id="@+id/profilePageFragment"
+        android:name="com.mauriciovera.billeteravirtualkroom.view.ProfilePageFragment"
+        android:label="fragment_profile_page"
+        tools:layout="@layout/fragment_profile_page" />
 </navigation>

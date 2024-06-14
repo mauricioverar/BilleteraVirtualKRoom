@@ -15,7 +15,10 @@
         android:theme="@style/Theme.BilleteraVirtualKRoom"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.LoginSignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.BilleteraVirtualKRoom">
             <intent-filter>

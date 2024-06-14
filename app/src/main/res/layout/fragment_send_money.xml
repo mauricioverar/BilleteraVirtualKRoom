@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFDFD"
+    tools:context=".view.SendMoneyFragment"
+    tools:ignore="ContentDescription">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/rectangle_ek6"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:layout_alignBottom="@+id/divider"
+            android:layout_centerHorizontal="false"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/white" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="101dp"
+            android:alpha="0.1"
+            android:background="@color/black" />
+
+        <TextView
+            android:id="@+id/request_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center_horizontal"
+            android:text="@string/send_money_string"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="24sp"
+            tools:ignore="RtlHardcoded" />
+
+        <ImageView
+            android:id="@+id/left"
+            android:layout_width="29dp"
+            android:layout_height="23dp"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="false"
+            android:layout_centerInParent="false"
+            android:layout_centerHorizontal="false"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:baselineAlignBottom="false"
+            android:src="@drawable/left"
+            tools:ignore="RtlHardcoded" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/payment_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+        <View
+            android:id="@+id/_bg__contact_info_ek1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/reem_1993_gmail_com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="32dp"
+            android:alpha="0.4"
+            android:fontFamily="@font/jua"
+            android:text="yara_khalil@gmail.com"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/reem_khaled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jua"
+            android:text="Yara Khalil"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
+
+        <RelativeLayout
+            android:id="@+id/profile_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp">
+
+
+            <View
+                android:id="@+id/oval"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/oval_shape" />
+
+            <TextView
+                android:id="@+id/y"
+                android:layout_width="19dp"
+                android:layout_height="32.8dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/jua"
+                android:gravity="center"
+                android:text="Y"
+                android:textColor="@color/very_dark_gray"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/payment_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:fontFamily="@font/jua"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:text="@string/payment_amount_out_string"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="16sp"
+            tools:ignore="TextViewEdits" />
+
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="62dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/white"
+            android:fontFamily="@font/jua"
+            android:hint="12.50"
+            android:inputType="numberDecimal"
+            android:padding="14dp"
+            android:textColor="@color/bright_green"
+            android:textSize="20sp"
+            tools:ignore="Autofill,HardcodedText,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/payment_note"
+        android:layout_width="wrap_content"
+        android:layout_height="190dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/payment_amount">
+
+        <View
+            android:id="@+id/rectangle_ek3"
+            android:layout_width="wrap_content"
+            android:layout_height="142dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/add_payment_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="43dp"
+            android:alpha="0.2494"
+            android:fontFamily="@font/jua"
+            android:text="@string/add_payment_note_string"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="14sp"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/payment_note_ek2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/jua"
+            android:text="@string/payment_note_string"
+            android:textColor="@color/very_dark_gray"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnTransSendMoney"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/bright_green"
+        android:drawableLeft="@drawable/path_ek6"
+        android:fontFamily="@font/jua"
+        android:paddingVertical="20dp"
+        android:text="@string/send_money_string"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/payment_note"
+        tools:ignore="DuplicateSpeakableTextCheck,RtlHardcoded,TextContrastCheck,VisualLintButtonSize" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

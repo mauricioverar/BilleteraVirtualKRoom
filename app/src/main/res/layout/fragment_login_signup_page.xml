@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/background"
+tools:context=".view.LoginSignupPageFragment">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+    <!-- Logo -->
+    <RelativeLayout
+        android:id="@+id/logo"
+        android:layout_width="182dp"
+        android:layout_height="148dp"
+        android:layout_marginBottom="85dp"
+        app:layout_constraintBottom_toTopOf="@+id/the_best_way_to_tran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <TextView
+            android:id="@+id/alkewallet"
+            android:layout_width="175.4dp"
+            android:layout_height="50.4dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="94dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center"
+            android:text="@string/alkewallet_string"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            tools:ignore="TextContrastCheck" />
+
+        <RelativeLayout
+            android:id="@+id/send_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="9dp">
+
+            <ImageView
+                android:id="@+id/vector"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/vector"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/path_ek4"
+                android:layout_width="34.42dp"
+                android:layout_height="34.42dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/path"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <!-- El lugar mas seguro para tu dinero -->
+    <TextView
+        android:id="@+id/the_best_way_to_tran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/jua"
+        android:gravity="center"
+        android:text="@string/the_best_way_to_tran_string"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+    <!-- boton crear cuenta nueva -->
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="91dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/the_best_way_to_tran">
+
+        <Button
+            android:id="@+id/btnGoToSignup"
+            android:layout_width="315dp"
+            android:layout_height="49dp"
+            tools:ignore="SpeakableTextPresentCheck,VisualLintOverlap" />
+
+        <View
+            android:id="@+id/rectangle"
+            android:layout_width="315dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/soft_blue"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/crear_cuenta_nueva"
+            android:layout_width="128.4dp"
+            android:layout_height="25.4dp"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center"
+            android:text="@string/create_new_account_string"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+
+    </RelativeLayout>
+    <!-- ya tiene cuenta? -->
+    <Button
+        android:id="@+id/btnGoToLogin"
+        android:layout_width="195dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="42dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/jua"
+        android:text="@string/already_have_account_string"
+        android:textColor="@color/vivid_blue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
