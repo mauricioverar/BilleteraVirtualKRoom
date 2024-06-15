@@ -66,16 +66,6 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.action_HomeFragment_to_requestMoneyFragment)
         }
 
-        //Carousel
-        /*binding.recyclerView.layoutManager = LinearLayoutManager(
-            context,
-            LinearLayoutManager.HORIZONTAL, false
-        )*/
-        //deben ser par
-        //binding.recyclerView.layoutManager = GridLayoutManager(context,2)//** para mostrar 2 columnas de fotos **
-
-
-        // fun de DatosViewModel , Observer de lyfecycle
         //,Observer
         viewModel.getDatos().observe(viewLifecycleOwner) {
 
