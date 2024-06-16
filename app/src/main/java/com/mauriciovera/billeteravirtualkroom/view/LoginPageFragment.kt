@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.mauriciovera.billeteravirtualkroom.R
 import com.mauriciovera.billeteravirtualkroom.databinding.FragmentLoginPageBinding
+import com.mauriciovera.billeteravirtualkroom.viewmodel.LoginViewModel
 
 class LoginPageFragment : Fragment() {
     //var SM: SendMessage? = null
@@ -22,6 +24,8 @@ class LoginPageFragment : Fragment() {
     private lateinit var navController: NavController
     private var _binding: FragmentLoginPageBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: LoginViewModel by viewModels()
 
     //private var datoEmail : String? = null // llega como string
 
@@ -64,6 +68,10 @@ class LoginPageFragment : Fragment() {
 
 
         binding.btnGoToHome.setOnClickListener {
+            val email = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            viewModel.login(email, password)
+
             /*if (binding.etEmail.text.toString().isEmpty()) {
                 binding.etEmail.error = "Campo requerido"
                 //toastEmailEmpty()
@@ -93,10 +101,22 @@ class LoginPageFragment : Fragment() {
                 return@setOnClickListener
             }*/
 
-            navController.navigate(R.id.action_loginPageFragment_to_HomeFragment)
+            //navController.navigate(R.id.action_loginPageFragment_to_HomeFragment)
+
             //navController.navigate(LoginPageFragmentDirections.actionLoginPageFragmentToHomeFragment(username = binding.etEmail.text.toString().trim()))
             //navController.navigate(LoginPageFragment.ActionLoginPageFragmentToHomeFragment(username = binding.etEmail.text.toString().trim()))
         }
+        //Observa loginResult
+        viewModel.loginResult.observe(viewLifecycleOwner) { result ->
+            updateUI(result)//Actualiza la UI con el resultado:
+        }
+    }
+
+    private fun updateUI(result: String) {// ): String?
+        binding.txtResult.visibility = View.VISIBLE // tomar elemento en xml y cambiar visibilidad
+        binding.txtResult.text = result // mostrar //token: QpwL5tke4Pnpja7X4
+        Log.d("result", result);
+
     }
 
     /*private fun toast() {
