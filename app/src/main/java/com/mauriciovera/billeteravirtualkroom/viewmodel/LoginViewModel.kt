@@ -27,6 +27,8 @@ class LoginViewModel : ViewModel() {
             //instancia de LoginService utilizando RetrofitClient.
             val serviceLogin = RetrofitHelp.getInstance().create(LoginService::class.java)
             //llamada a la función login de LoginService.
+            Log.d("result viewmodel", email.toString() + password.toString())//ok
+
             serviceLogin.login(UserModel(email, password)).enqueue(object : Callback<LoginResponse> {
                 //implementación de Callback para manejar la respuesta de la llamada a la API.
                 override fun onResponse(
@@ -38,8 +40,9 @@ class LoginViewModel : ViewModel() {
                         200 -> {
                             val result = response.body()
                             Log.d("result body", result.toString())
-                            Log.d("result token", result?.token.toString())
-                            _loginResult.value = "${Constants.TOKEN_PROPERTY}: ${result?.token}"
+                            Log.d("result token", result?.token.toString()) //accessToken
+                            //_loginResult.value = "${Constants.TOKEN_PROPERTY}: ${result?.token}" //accessToken
+                            _loginResult.value = "Login successful"
                         }
                         400 -> {
                             _loginResult.value = "Error 400" // O un mensaje más específico
@@ -51,7 +54,7 @@ class LoginViewModel : ViewModel() {
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.e("err82", t.message.toString())
+                    Log.e("result err82", t.message.toString())
                     _loginResult.value = "Error de conexión" // O un mensaje más específico
                 }
             })

@@ -118,7 +118,7 @@ tools:ignore="ContentDescription">
             android:layout_marginTop="10dp"
             android:fontFamily="@font/jua"
             android:text="@string/password_string" />
-
+<!--TextInputLayout para mejorar la experiencia de usuario-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

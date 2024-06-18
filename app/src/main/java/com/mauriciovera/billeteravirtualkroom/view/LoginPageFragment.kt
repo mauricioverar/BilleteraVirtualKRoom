@@ -49,13 +49,13 @@ class LoginPageFragment : Fragment() {
         //reemplazar con datos de basedato con un token puede ser
         arguments?.let { bundle ->
             //datoEmail = bundle.getString("datoEmail") //********************
-            datoEmail = "a@web.cl"
+            datoEmail = "eve.holt@reqres.in"
 
             //datoPassword= bundle.getString("datoPassword") //********************
-            datoPassword= "12345678l"
+            datoPassword= "cityslicka"
 
 
-            Log.d("SELECCION datoEmail, datoPassword", datoEmail.toString() + datoPassword.toString()) //ok // ok
+            //Log.d("SELECCION datoEmail, datoPassword", datoEmail.toString() + datoPassword.toString()) //ok // ok
         }
 
         binding.btnGoToNewSignup.setOnClickListener {
@@ -66,13 +66,21 @@ class LoginPageFragment : Fragment() {
         val emailRegex = "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
         val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
 
+        /*
+    {
+        "email": "eve.holt@reqres.in",
+        "password": "cityslicka"
+    }
+     */
 
         binding.btnGoToHome.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
-            viewModel.login(email, password)
+            Log.d("result email, password", email.toString() + password.toString())
 
-            /*if (binding.etEmail.text.toString().isEmpty()) {
+            // validar
+
+            if (binding.etEmail.text.toString().isEmpty()) {
                 binding.etEmail.error = "Campo requerido"
                 //toastEmailEmpty()
                 return@setOnClickListener
@@ -85,10 +93,10 @@ class LoginPageFragment : Fragment() {
                 toastEmailFalse()
                 return@setOnClickListener
             }
-            if (!binding.etPassword.text.toString().matches(passwordRegex.toRegex())) {
+            /*if (!binding.etPassword.text.toString().matches(passwordRegex.toRegex())) {
                 toastPasswordFalse()
                 return@setOnClickListener
-            }
+            }*/
 
             //val intent = Intent(context, HomePageFragment::class.java)
             //intent.putExtra("username", binding.etEmail.text.toString())
@@ -97,9 +105,13 @@ class LoginPageFragment : Fragment() {
 
             //validar con basedato
             if (binding.etEmail.text.toString() != datoEmail || binding.etPassword.text.toString() != datoPassword) {
-                Toast.makeText(context, "Email o contraseña incorrecta", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Email o contraseña no existe en basedatos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            }*/
+            }
+
+            // login
+            viewModel.login(email, password)
+
 
             //navController.navigate(R.id.action_loginPageFragment_to_HomeFragment)
 
@@ -116,7 +128,9 @@ class LoginPageFragment : Fragment() {
         binding.txtResult.visibility = View.VISIBLE // tomar elemento en xml y cambiar visibilidad
         binding.txtResult.text = result // mostrar //token: QpwL5tke4Pnpja7X4
         Log.d("result", result);
-
+        if (result == "Login successful") {
+            navController.navigate(R.id.action_loginPageFragment_to_HomeFragment)
+        }
     }
 
     /*private fun toast() {
