@@ -1,9 +1,11 @@
 package com.mauriciovera.billeteravirtualkroom.model.network
 
+import com.mauriciovera.billeteravirtualkroom.model.Constants
 import com.mauriciovera.billeteravirtualkroom.model.DatoDetailModel
 import com.mauriciovera.billeteravirtualkroom.model.DatoModel
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface DatosApiService {

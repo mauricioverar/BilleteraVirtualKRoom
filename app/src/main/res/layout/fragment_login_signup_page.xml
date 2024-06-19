@@ -139,12 +139,15 @@ tools:context=".view.LoginSignupPageFragment">
         android:backgroundTint="@color/white"
         android:fontFamily="@font/jua"
         android:text="@string/already_have_account_string"
+        android:textAllCaps="false"
         android:textColor="@color/vivid_blue"
+        android:textIsSelectable="false"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+        app:toggleCheckedStateOnClick="false"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
 

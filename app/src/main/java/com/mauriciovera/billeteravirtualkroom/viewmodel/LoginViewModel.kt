@@ -48,7 +48,7 @@ class LoginViewModel : ViewModel() {
                             _loginResult.value = "Error 400" // O un mensaje más específico
                         }
                         else -> {
-                            _loginResult.value = "Error 500" // O un mensaje más específico
+                            _loginResult.value = "Error 500 Internal Server" // O un mensaje más específico
                         }
                     }
                 }

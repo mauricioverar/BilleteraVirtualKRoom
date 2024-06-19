@@ -69,8 +69,24 @@ class LoginPageFragment : Fragment() {
         /*
     {
         "email": "eve.holt@reqres.in",
-        "password": "cityslicka"
+        "password": "cityslicka" // pistol
     }
+    {
+    "email": "Sara_moli.na@hotmail.com",
+    "password": "alfa22"
+}
+
+    {
+    "name": "leny",
+    "job": "junior"
+    }
+
+    {
+    "name": "leny",
+    "job": "junior",
+    "id": "988",
+    "createdAt": "2024-06-18T19:39:28.626Z"
+}
      */
 
         binding.btnGoToHome.setOnClickListener {
@@ -104,10 +120,10 @@ class LoginPageFragment : Fragment() {
             //SM?.sendData(binding.etEmail.text.toString().trim())
 
             //validar con basedato
-            if (binding.etEmail.text.toString() != datoEmail || binding.etPassword.text.toString() != datoPassword) {
+            /*if (binding.etEmail.text.toString() != datoEmail || binding.etPassword.text.toString() != datoPassword) {
                 Toast.makeText(context, "Email o contraseña no existe en basedatos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            }
+            }*/
 
             // login
             viewModel.login(email, password)
