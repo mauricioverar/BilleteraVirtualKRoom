@@ -39,7 +39,7 @@ class LoginViewModel : ViewModel() {
                         200 -> {
                             val result = response.body()
                             Log.d("result body", result.toString())
-                            Log.d("result token", result?.token.toString()) //accessToken
+                            Log.d("result token", result?.accessToken.toString()) //accessToken // token
                             //_loginResult.value = "${Constants.TOKEN_PROPERTY}: ${result?.token}" //accessToken
                             _loginResult.value = "Login successful"
                         }

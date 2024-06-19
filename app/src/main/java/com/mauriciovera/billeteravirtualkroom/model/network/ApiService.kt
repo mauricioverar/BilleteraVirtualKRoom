@@ -3,6 +3,7 @@ package com.mauriciovera.billeteravirtualkroom.model.network
 import com.mauriciovera.billeteravirtualkroom.model.Constants
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
+import com.mauriciovera.billeteravirtualkroom.model.response.SignupResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -17,7 +18,7 @@ interface ApiService {
 
     // * Authentication
     @Headers("Content-Type: application/json")
-    /// /auth + /login
+    /// auth + /login
     @POST(Constants.API_PATH + Constants.LOGIN_PATH)
     fun login(@Body data: UserModel): Call<LoginResponse>//suspend
     //suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
@@ -27,7 +28,8 @@ interface ApiService {
 
     // * Users
     @POST("users")
-    suspend fun postUsers(@Body data: UserModel)
+    fun postUsers(@Body data: UserModel): Call<SignupResponse>
+    //suspend fun postUsers
 
     @GET("users")
     suspend fun getUsers()

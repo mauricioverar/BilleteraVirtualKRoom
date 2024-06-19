@@ -108,8 +108,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jua"
                 android:hint="@string/enter_your_name_string"
-                tools:ignore="TextContrastCheck,VisualLintTextFieldSize"
-                android:text="@={viewModel.name}" />
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -130,8 +129,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jua"
                 android:hint="@string/enter_your_lastname_string"
-                tools:ignore="VisualLintTextFieldSize"
-                android:text="@={viewModel.lastName}"/>
+                tools:ignore="VisualLintTextFieldSize"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -200,6 +198,7 @@
             android:text="@={viewModel.confirmPassword}">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jua"
