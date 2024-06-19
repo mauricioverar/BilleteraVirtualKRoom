@@ -5,9 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mauriciovera.billeteravirtualkroom.model.Constants
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
-import com.mauriciovera.billeteravirtualkroom.model.network.LoginService
+import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
 import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelp
 import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
 import kotlinx.coroutines.launch
@@ -25,7 +24,7 @@ class LoginViewModel : ViewModel() {
         //corrutina en el viewModelScope.
         viewModelScope.launch {
             //instancia de LoginService utilizando RetrofitClient.
-            val serviceLogin = RetrofitHelp.getInstance().create(LoginService::class.java)
+            val serviceLogin = RetrofitHelp.getInstance().create(ApiService::class.java)
             //llamada a la función login de LoginService.
             Log.d("result viewmodel", email.toString() + password.toString())//ok
 
