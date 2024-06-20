@@ -23,6 +23,8 @@ import com.mauriciovera.billeteravirtualkroom.viewmodel.DatosViewModel
  */
 class HomeFragment : Fragment() {
 
+    private var username: String? = null
+
     private var _binding: FragmentHomeBinding? = null
     private val viewModel: DatosViewModel by activityViewModels()//viewModel
 
@@ -43,6 +45,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+
+        //recibiendo dato **********************************************
+        arguments?.let { bundle ->
+            username = bundle.getString("username")
+            Log.d("selected ", username.toString()) //ok
+            val name = username?.substringBefore("_")
+            //username = username?.split("_")//uppercase()
+            binding.tvUsername.text = binding.root.context.getString(R.string.hello, name)
+        }
+
 
         /*binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

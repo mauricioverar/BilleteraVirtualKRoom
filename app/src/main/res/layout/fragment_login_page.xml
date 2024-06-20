@@ -84,11 +84,11 @@ tools:ignore="ContentDescription">
             android:text="@string/login_and_start_tran_string"
             android:textSize="24sp" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/txtResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Token" />
+            android:text="Token" />-->
 
         <TextView
             android:id="@+id/textView5"

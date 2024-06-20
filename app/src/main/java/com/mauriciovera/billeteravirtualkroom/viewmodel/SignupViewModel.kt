@@ -60,7 +60,7 @@ class SignupViewModel : ViewModel() {
                             Log.d("result error", response.toString())//.errorBody().toString()
                             // run login para ver repetido **
 
-                            _signupResult.value = "Error 500 Internal Server" // O un mensaje más específico
+                            _signupResult.value = "Email registrado anteriormente" // O un mensaje más específico
                         }
                     }
                 }

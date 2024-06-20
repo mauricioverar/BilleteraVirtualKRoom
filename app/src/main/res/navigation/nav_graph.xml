@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_profilePageFragment"
             app:destination="@id/profilePageFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/loginSignupPageFragment"
@@ -51,8 +54,7 @@
             app:destination="@id/nav_graph" />
         <argument
             android:name="email"
-            app:argType="string"
-            android:defaultValue="Guest" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/signupPageFragment"

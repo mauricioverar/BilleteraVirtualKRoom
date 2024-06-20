@@ -117,6 +117,8 @@ class SignupPageFragment : Fragment() {
         Log.d("result signup", result);
         if (result == "Signup successful") {
             navController.navigate(R.id.action_signupPageFragment_to_loginPageFragment)
+        } else {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show()
         }
     }
 

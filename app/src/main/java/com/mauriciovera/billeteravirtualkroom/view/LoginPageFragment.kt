@@ -1,5 +1,6 @@
 package com.mauriciovera.billeteravirtualkroom.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.mauriciovera.billeteravirtualkroom.R
 import com.mauriciovera.billeteravirtualkroom.databinding.FragmentLoginPageBinding
 import com.mauriciovera.billeteravirtualkroom.viewmodel.LoginViewModel
@@ -114,8 +116,8 @@ class LoginPageFragment : Fragment() {
                 return@setOnClickListener
             }*/
 
-            //val intent = Intent(context, HomePageFragment::class.java)
-            //intent.putExtra("username", binding.etEmail.text.toString())
+            /*val intent = Intent(context, HomeFragment::class.java)
+            intent.putExtra("username", binding.etEmail.text.toString())*/
 
             //SM?.sendData(binding.etEmail.text.toString().trim())
 
@@ -141,11 +143,19 @@ class LoginPageFragment : Fragment() {
     }
 
     private fun updateUI(result: String) {// ): String?
-        binding.txtResult.visibility = View.VISIBLE // tomar elemento en xml y cambiar visibilidad
+        /*binding.txtResult.visibility = View.VISIBLE // tomar elemento en xml y cambiar visibilidad
         binding.txtResult.text = result // mostrar //token: QpwL5tke4Pnpja7X4
+        */
         Log.d("result", result);
         if (result == "Login successful") {
-            navController.navigate(R.id.action_loginPageFragment_to_HomeFragment)
+            //navController.navigate(R.id.action_loginPageFragment_to_HomeFragment(username = binding.etEmail.text.toString().trim()))
+
+            val bundle = Bundle().apply {
+                putString("username", binding.etEmail.text.toString().trim())
+            }
+            findNavController().navigate(R.id.action_loginPageFragment_to_HomeFragment, bundle)
+        } else {
+            Toast.makeText(context, "No está registrado", Toast.LENGTH_LONG).show()
         }
     }
 
