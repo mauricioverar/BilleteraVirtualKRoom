@@ -49,13 +49,35 @@ class SignupPageFragment : Fragment() {
         {
     "email": "Susan_moli.na@hotmail.com",//Sofia
     "password": "alfa22"
+        }
+        {
+    "email": "Sonia_moli.na@hotmail.com",
+    "password": "beta33"
+        }
+        {
+    "roleId": 2,
+    "id": 3642,
+    "email": "Sonia_moli.na@hotmail.com",
+    "password": "$2b$10$kiPiqY3wuX6shqaECoV5S.MOHDvvUc4oy5M5KzcYmNggwV2EDQyo.",
+    "updatedAt": "2024-06-20T22:45:57.991Z",
+    "createdAt": "2024-06-20T22:45:57.991Z"
+    }
+    {
+    "first_name": "Sisa", Samy
+    "last_name": "Molina",
+    "email": "Sisa_moli.na@hotmail.com",
+    "password": "beta33",
+    "points": 124.57
 }
         * */
 
         binding.btnGoToNewSignup.setOnClickListener {
+            val firstName = binding.etFirstName.text.toString().trim()
+            val lastName = binding.etLastName.text.toString().trim()
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
             val confirmPassword = binding.etRePassword.text.toString().trim()
+            val points = 124.57 // carga inicial
 
             Log.d("result email, password", email.toString() + password.toString())
 
@@ -89,7 +111,7 @@ class SignupPageFragment : Fragment() {
             }
 
             // signup
-            viewModel.signup(email, password)
+            viewModel.signup(firstName, lastName, email, password, points)
 
             //navController.navigate(R.id.action_signupPageFragment_to_newSignupFragment)
 

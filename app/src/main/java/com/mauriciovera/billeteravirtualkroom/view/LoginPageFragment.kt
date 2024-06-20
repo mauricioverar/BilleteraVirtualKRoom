@@ -70,25 +70,9 @@ class LoginPageFragment : Fragment() {
 
         /*
     {
-        "email": "eve.holt@reqres.in",
-        "password": "cityslicka" // pistol
-    }
-    {
     "email": "Sara_moli.na@hotmail.com",
     "password": "alfa22"
-}
-
-    {
-    "name": "leny",
-    "job": "junior"
     }
-
-    {
-    "name": "leny",
-    "job": "junior",
-    "id": "988",
-    "createdAt": "2024-06-18T19:39:28.626Z"
-}
      */
 
         binding.btnGoToHome.setOnClickListener {
@@ -155,7 +139,7 @@ class LoginPageFragment : Fragment() {
             }
             findNavController().navigate(R.id.action_loginPageFragment_to_HomeFragment, bundle)
         } else {
-            Toast.makeText(context, "No está registrado", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Email o contraseña no registrado", Toast.LENGTH_LONG).show()
         }
     }
 

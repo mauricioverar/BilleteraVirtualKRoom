@@ -104,6 +104,7 @@
             android:layout_marginTop="1dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jua"
@@ -125,11 +126,12 @@
             android:layout_marginTop="1dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jua"
                 android:hint="@string/enter_your_lastname_string"
-                tools:ignore="VisualLintTextFieldSize"/>
+                tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

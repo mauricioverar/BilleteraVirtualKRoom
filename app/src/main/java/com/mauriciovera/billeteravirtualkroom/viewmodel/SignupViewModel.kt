@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
 import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelp
@@ -21,7 +22,7 @@ class SignupViewModel : ViewModel() {
     //LiveData público que expone el resultado del signup a la vista
     val signupResult: LiveData<String> = _signupResult
 
-    fun signup(email: String, password: String) {
+    fun signup(firstName: String, lastName: String, email: String, password: String, points: Double) {
         //corrutina en el viewModelScope.
         viewModelScope.launch {
             //instancia de LoginService utilizando RetrofitClient.
@@ -29,7 +30,7 @@ class SignupViewModel : ViewModel() {
             //llamada a la función login de LoginService.
             Log.d("result Signupviewmodel", email.toString() + password.toString())//ok
 
-            serviceSignup.postUsers(UserModel(email, password)).enqueue(object :
+            serviceSignup.postUsers(UserDetailsModel(firstName, lastName, email, password, points)).enqueue(object :
                 Callback<SignupResponse> {
                 //implementación de Callback para manejar la respuesta de la llamada a la API.
                 override fun onResponse(

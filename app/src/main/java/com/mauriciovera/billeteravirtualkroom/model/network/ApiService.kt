@@ -1,6 +1,7 @@
 package com.mauriciovera.billeteravirtualkroom.model.network
 
 import com.mauriciovera.billeteravirtualkroom.model.Constants
+import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
 import com.mauriciovera.billeteravirtualkroom.model.response.SignupResponse
@@ -20,7 +21,8 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     /// auth + /login
     @POST(Constants.API_PATH + Constants.LOGIN_PATH)
-    fun login(@Body data: UserModel): Call<LoginResponse>//suspend
+    fun login(@Body data: UserModel): Call<LoginResponse> 
+    //suspend
     //suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 
     @GET("auth/me")
@@ -28,7 +30,7 @@ interface ApiService {
 
     // * Users
     @POST("users")
-    fun postUsers(@Body data: UserModel): Call<SignupResponse>
+    fun postUsers(@Body data: UserDetailsModel): Call<SignupResponse>
     //suspend fun postUsers
 
     @GET("users")
