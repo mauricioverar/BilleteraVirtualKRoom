@@ -19,8 +19,8 @@ class SignupViewModel : ViewModel() {
     val signupResult: LiveData<String> = _signupResult
 
     fun signup(
-        firstName: String,
-        lastName: String,
+        first_name: String,
+        last_name: String,
         email: String,
         password: String,
         points: Double,
@@ -32,8 +32,8 @@ class SignupViewModel : ViewModel() {
 
             serviceSignup.postUsers(
                 UserDetailsModel(
-                    firstName,
-                    lastName,
+                    first_name,
+                    last_name,
                     email,
                     password,
                     points,

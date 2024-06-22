@@ -42,8 +42,8 @@ class SignupPageFragment : Fragment() {
         //val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
 
         binding.btnGoToNewSignup.setOnClickListener {
-            val firstName = binding.etFirstName.text.toString().trim()
-            val lastName = binding.etLastName.text.toString().trim()
+            val first_name = binding.etFirstName.text.toString().trim()
+            val last_name = binding.etLastName.text.toString().trim()
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
             val confirmPassword = binding.etRePassword.text.toString().trim()
@@ -74,7 +74,7 @@ class SignupPageFragment : Fragment() {
                 return@setOnClickListener
             }*/
 
-            viewModel.signup(firstName, lastName, email, password, points, roleId)
+            viewModel.signup(first_name, last_name, email, password, points, roleId)
         }
         viewModel.signupResult.observe(viewLifecycleOwner) { result ->
             updateUI(result)

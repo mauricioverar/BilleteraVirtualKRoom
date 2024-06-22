@@ -1,6 +1,6 @@
 package com.mauriciovera.billeteravirtualkroom.model.network
 
-import com.mauriciovera.billeteravirtualkroom.model.Constants
+//import com.mauriciovera.billeteravirtualkroom.model.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

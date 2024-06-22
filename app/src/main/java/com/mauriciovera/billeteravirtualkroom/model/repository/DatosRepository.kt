@@ -11,18 +11,15 @@ class DatosRepository(private val datosDao: DatosDao) {
     private val networkService = RetrofitClient.getInstance()
     val datosList = datosDao.getAll()
 
-    // Funciones de ayuda para el CRUD
-    // todos los datos
     suspend fun getDatos() {
-        //ApiService
-        val service = kotlin.runCatching { networkService.getDatos() } // todos
+        val service = kotlin.runCatching { networkService.getDatos() }
         service.onSuccess {
             when (it.code()) {
                 in 200..299 -> it.body()?.let {
                     Log.d("datos", it.toString())
-                    //datosDao minus
                     datosDao.insertAll(fromInternetDatosEntity(it))
                 }
+
                 else -> Log.d("Repository", "${it.code()}-${it.errorBody()}")
             }
             service.onFailure {
@@ -30,11 +27,10 @@ class DatosRepository(private val datosDao: DatosDao) {
             }
         }
     }
-    // un dato
-    // desarrollar viewmodel *** *** *** DatosDetailEntity
-    suspend fun getDetail(id: Int): DatosDetailEntity?{//importar primero fromInternetDetailEntity
+
+    suspend fun getDetail(id: Int): DatosDetailEntity? {
         val service = kotlin.runCatching { networkService.getDatosDetail(id) }
-        return service.getOrNull()?.body()?.let {datosDetail ->
+        return service.getOrNull()?.body()?.let { datosDetail ->
             val datosDetailEntity = fromInternetDetailEntity(datosDetail)
             datosDao.insertDetail(datosDetailEntity)
             datosDetailEntity

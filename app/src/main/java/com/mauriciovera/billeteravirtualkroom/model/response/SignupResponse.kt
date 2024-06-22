@@ -7,13 +7,4 @@ data class SignupResponse(
     val password: String,
     val roleId: Int,
     val points: Double
-
 )
-/*
-
-    val roleId: Int,
-    val id: Int,
-    val email: String,
-    val password: String,
-    val updatedAt: String,
-    val createdAt: String*/

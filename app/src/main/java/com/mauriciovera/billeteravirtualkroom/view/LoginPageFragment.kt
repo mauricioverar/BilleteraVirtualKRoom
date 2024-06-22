@@ -17,9 +17,6 @@ import com.mauriciovera.billeteravirtualkroom.viewmodel.LoginViewModel
 
 class LoginPageFragment : Fragment() {
 
-    private var datoEmail: String? = null
-    private var datoPassword: String? = null
-
     private lateinit var navController: NavController
     private var _binding: FragmentLoginPageBinding? = null
     private val binding get() = _binding!!
@@ -38,14 +35,6 @@ class LoginPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-
-        arguments?.let { _ ->
-            datoEmail = "eve.holt@reqres.in"
-
-            datoPassword = "cityslicka"
-
-
-        }
 
         binding.btnGoToNewSignup.setOnClickListener {
             navController.navigate(R.id.action_loginPageFragment_to_signupPageFragment)
@@ -84,12 +73,6 @@ class LoginPageFragment : Fragment() {
             }
             /*if (!binding.etPassword.text.toString().matches(passwordRegex.toRegex())) {
                 toastPasswordFalse()
-                return@setOnClickListener
-            }*/
-
-            //validar con basedato
-            /*if (binding.etEmail.text.toString() != datoEmail || binding.etPassword.text.toString() != datoPassword) {
-                Toast.makeText(context, "Email o contraseña no existe en basedatos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }*/
 

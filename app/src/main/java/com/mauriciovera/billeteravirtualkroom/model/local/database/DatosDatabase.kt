@@ -9,7 +9,7 @@ import com.mauriciovera.billeteravirtualkroom.model.local.entities.DatosDetailEn
 import com.mauriciovera.billeteravirtualkroom.model.local.entities.DatosEntity
 
 @Database(entities = [DatosEntity::class, DatosDetailEntity::class], version = 1)
-abstract class DatosDatabase: RoomDatabase() {
+abstract class DatosDatabase : RoomDatabase() {
     abstract fun datosDao(): DatosDao
 
     companion object {
