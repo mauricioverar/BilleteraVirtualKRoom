@@ -6,6 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitHelp {
     private var instance: Retrofit? = null
+    lateinit var getInstance: Retrofit
 
     fun getInstance(): Retrofit {
         if (instance == null) {
