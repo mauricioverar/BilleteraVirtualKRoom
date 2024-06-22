@@ -1,6 +1,5 @@
 package com.mauriciovera.billeteravirtualkroom.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,11 +16,9 @@ import com.mauriciovera.billeteravirtualkroom.databinding.FragmentLoginPageBindi
 import com.mauriciovera.billeteravirtualkroom.viewmodel.LoginViewModel
 
 class LoginPageFragment : Fragment() {
-    //var SM: SendMessage? = null
 
-    //val args: LoginPageFragmentArgs by navArgs() //agregar en nav_graph
-    private var datoEmail : String? = null // llega como string
-    private var datoPassword : String? = null // llega como string
+    private var datoEmail: String? = null
+    private var datoPassword: String? = null
 
     private lateinit var navController: NavController
     private var _binding: FragmentLoginPageBinding? = null
@@ -29,13 +26,11 @@ class LoginPageFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModels()
 
-    //private var datoEmail : String? = null // llega como string
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentLoginPageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -44,36 +39,22 @@ class LoginPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        //recibiendo dato **********************************************
-        /*val email = args.email
-        Log.d("SELECCION datoEmail", email.toString()) */
-
-        //reemplazar con datos de basedato con un token puede ser
-        arguments?.let { bundle ->
-            //datoEmail = bundle.getString("datoEmail") //********************
+        arguments?.let { _ ->
             datoEmail = "eve.holt@reqres.in"
 
-            //datoPassword= bundle.getString("datoPassword") //********************
-            datoPassword= "cityslicka"
+            datoPassword = "cityslicka"
 
 
-            //Log.d("SELECCION datoEmail, datoPassword", datoEmail.toString() + datoPassword.toString()) //ok // ok
         }
 
         binding.btnGoToNewSignup.setOnClickListener {
             navController.navigate(R.id.action_loginPageFragment_to_signupPageFragment)
         }
 
-        // validar email y contraseña
         val emailRegex = "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
-        val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
-
+        //val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         /*
     {
-    "email": "Sara_moli.na@hotmail.com",
-    "password": "alfa22"
-
-
     "first_name": "Soyo",Sam
     "last_name": "Molina",
     "email": "Sam_moli.na@hotmail.com",
@@ -86,9 +67,7 @@ class LoginPageFragment : Fragment() {
         binding.btnGoToHome.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
-            Log.d("result email, password", email.toString() + password.toString())
-
-            // validar
+            Log.d("result email, password", email + password)
 
             if (binding.etEmail.text.toString().isEmpty()) {
                 binding.etEmail.error = "Campo requerido"
@@ -108,37 +87,21 @@ class LoginPageFragment : Fragment() {
                 return@setOnClickListener
             }*/
 
-            /*val intent = Intent(context, HomeFragment::class.java)
-            intent.putExtra("username", binding.etEmail.text.toString())*/
-
-            //SM?.sendData(binding.etEmail.text.toString().trim())
-
             //validar con basedato
             /*if (binding.etEmail.text.toString() != datoEmail || binding.etPassword.text.toString() != datoPassword) {
                 Toast.makeText(context, "Email o contraseña no existe en basedatos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }*/
 
-            // login
             viewModel.login(email, password)
-
-
-            //navController.navigate(R.id.action_loginPageFragment_to_HomeFragment)
-
-            //navController.navigate(LoginPageFragmentDirections.actionLoginPageFragmentToHomeFragment(username = binding.etEmail.text.toString().trim()))
-            //navController.navigate(LoginPageFragment.ActionLoginPageFragmentToHomeFragment(username = binding.etEmail.text.toString().trim()))
         }
-        //Observa loginResult
         viewModel.loginResult.observe(viewLifecycleOwner) { result ->
 
-            updateUI(result)//Actualiza la UI con el resultado:
+            updateUI(result)
         }
     }
 
-    private fun updateUI(result: String) {// ): String?
-        /*binding.txtResult.visibility = View.VISIBLE // tomar elemento en xml y cambiar visibilidad
-        binding.txtResult.text = result // mostrar //token: QpwL5tke4Pnpja7X4
-        */
+    private fun updateUI(result: String) {
 
         val partes = result.split("|")
         val stringOriginal = partes[0]
@@ -146,28 +109,21 @@ class LoginPageFragment : Fragment() {
         val stringName = partes[2]
 
 
-        Log.d("result datos", stringOriginal + intOriginal.toString() + stringName) //Login successful140 //[Login successful, 140]
+        Log.d(
+            "result datos",
+            stringOriginal + intOriginal.toString() + stringName
+        )
 
         if (stringOriginal == "Login successful") {
-            //navController.navigate(R.id.action_loginPageFragment_to_HomeFragment(username = binding.etEmail.text.toString().trim()))
 
-            //val balance = 120
             val bundle = Bundle().apply {
-                putString("username", stringName) // y points ***
+                putString("username", stringName)
                 putString("balance", intOriginal.toString())
             }
             findNavController().navigate(R.id.action_loginPageFragment_to_HomeFragment, bundle)
         } else {
             Toast.makeText(context, "Email o contraseña no registrado", Toast.LENGTH_LONG).show()
         }
-    }
-
-    /*private fun toast() {
-        Toast.makeText(this, "Ingresa nueva contraseña", Toast.LENGTH_SHORT).show()
-    }*/
-
-    private fun toastEmailEmpty() {
-        binding.etEmail.error = "Campo requerido"
     }
 
     private fun toastPasswordEmpty() {
@@ -178,17 +134,8 @@ class LoginPageFragment : Fragment() {
         binding.etEmail.error = "Email incorrecto"
     }
 
-    private fun toastPasswordFalse() {
-        binding.etPassword.error = "Contraseña debe contener al menos 8 caracteres, una letra y un número"
-        //Toast.makeText(this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
-    }
-
-    /*interface SendMessage {
-        fun sendData(message: String?)
-    }
-
-    override fun onAttach(context: android.content.Context) {
-        super.onAttach(context)
-        SM = context as SendMessage
+    /*private fun toastPasswordFalse() {
+        binding.etPassword.error =
+            "Contraseña debe contener al menos 8 caracteres, una letra y un número"
     }*/
 }

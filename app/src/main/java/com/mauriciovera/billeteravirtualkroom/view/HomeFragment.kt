@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-//import androidx.navigation.fragment.findNavController
-//import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mauriciovera.billeteravirtualkroom.R
-//import com.mauriciovera.billeteravirtualkroom.databinding.FragmentFirstBinding
 import com.mauriciovera.billeteravirtualkroom.databinding.FragmentHomeBinding
 import com.mauriciovera.billeteravirtualkroom.view.adapter.DatosListAdapter
 import com.mauriciovera.billeteravirtualkroom.viewmodel.DatosViewModel
@@ -28,7 +25,7 @@ class HomeFragment : Fragment() {
 
 
     private var _binding: FragmentHomeBinding? = null
-    private val viewModel: DatosViewModel by activityViewModels()//viewModel
+    private val viewModel: DatosViewModel by activityViewModels()
 
     private lateinit var navController: NavController
 
@@ -48,28 +45,18 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        //recibiendo dato **********************************************
         arguments?.let { bundle ->
             username = bundle.getString("username")
             balance = bundle.getString("balance")
             Log.d("selected ", username.toString()) //ok
-            val name = username?.substringBefore("_") // "Sara_moli.na@hotmail.com" // "Sara"
-            //username = username?.split("_")//uppercase()
+            val name = username?.substringBefore("_")
             binding.tvUsername.text = binding.root.context.getString(R.string.hello, name)
             binding.tvBalance.text = binding.root.context.getString(R.string.balance, balance)
-            //binding.tvBalance.text = binding.root.context.getString(R.string.balance, "120")
         }
 
-
-        /*binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }*/
-
-        // instanciar adapter
         val adapter = DatosListAdapter()
-        //id del recycler en fragment_first.xml
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)//una columna
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
 
         binding.profilePicture.setOnClickListener {
             navController.navigate(R.id.action_HomeFragment_to_profilePageFragment)
@@ -94,18 +81,11 @@ class HomeFragment : Fragment() {
             }
 
         }
-        //seleccionar
 
-        //Observer ********************************************************
         adapter.selectDato().observe(viewLifecycleOwner) {
             it.let {
                 Log.d("SELECCION", it.toString())
             }
-            val bundle = Bundle().apply {
-                putString("datoId", it.id.toString()) //.toString() porq es Int
-            }
-            //findNavController().navigate(R.id.action_HomeFragment_to_SecondFragment, bundle)
-            //findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment(it.id.toString()))
         }
     }
 

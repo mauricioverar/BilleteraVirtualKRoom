@@ -7,28 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".view.HomeFragment">
 
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnSendMoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/bright_green"
-            android:text="Send" />
-
-        <Button
-            android:id="@+id/btnRequestMoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/accent_color"
-            android:text="Request" />
-    </LinearLayout>-->
-
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -52,7 +30,7 @@
             android:layout_alignEnd="@id/rectangle_ek12"
             android:layout_marginStart="0dp"
             android:src="@drawable/path_ek7"
-            tools:ignore="ImageContrastCheck" />
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tvUsername"
@@ -108,7 +86,7 @@
             android:layout_marginTop="204dp"
             android:scaleType="centerInside"
             android:src="@drawable/drawable_image_3"
-            tools:ignore="ImageContrastCheck" />
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/dashboard"
@@ -136,9 +114,9 @@
 
         <Button
             android:id="@+id/btnSendMoney"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center|center_horizontal"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
@@ -155,9 +133,9 @@
 
         <Button
             android:id="@+id/btnRequestMoney"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal|center"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
@@ -185,7 +163,7 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:ignore="TextSizeCheck" />
+        tools:ignore="TextSizeCheck,VisualLintOverlap" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -206,457 +184,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <!--<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp">
-
-
-    &lt;!&ndash;        item2&ndash;&gt;
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
-        android:orientation="vertical"
-        android:padding="20dp"
-        tools:ignore="UselessParent">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="305dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_profile_pic0"
-                tools:ignore="ImageContrastCheck" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="296dp"
-                android:background="@drawable/user_oval"
-                android:scaleType="centerInside"
-                tools:ignore="ImageContrastCheck" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="299dp"
-                android:layout_marginBottom="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/drawable_image_1"
-                tools:ignore="ImageContrastCheck" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="240dp"
-                android:fontFamily="@font/jua"
-                android:gravity="center_vertical|end"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="-$15.00"
-                android:textColor="#FF000000"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Yara Khalil"
-                android:textColor="#FF1A1A1A"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText,TextSizeCheck" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginTop="20dp"
-                android:alpha="0.4000000059604645"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Oct 14, 10:24 AM"
-                android:textColor="#FF1A1A1A"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,TextContrastCheck,TextSizeCheck" />
-
-        </RelativeLayout>
-
-        &lt;!&ndash;            item2&ndash;&gt;
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/user_amount_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="3.5dp"
-                android:fontFamily="@font/jua"
-                android:gravity="end|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="+$20.50"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/user_time_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="2.5dp"
-                android:alpha="0.4000000059604645"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Oct 12, 02:13 PM"
-                android:textColor="#FF1A1A1A"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,TextContrastCheck,TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/user_name_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginBottom="14dp"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Sara Ibrahim"
-                android:textColor="#FF1A1A1A"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText,TextSizeCheck" />
-
-            <ImageView
-                android:id="@+id/user_profile_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="305dp"
-                android:layout_marginBottom="9dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_profile_pic1" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="296dp"
-                android:background="@drawable/user_oval"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:id="@+id/user_request_icon_image"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="299dp"
-                android:layout_marginBottom="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_request_icon" />
-
-
-        </RelativeLayout>
-        &lt;!&ndash;            item3&ndash;&gt;
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/user_balance1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="3.5dp"
-                android:fontFamily="@font/jua"
-                android:gravity="end|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="+$12.40"
-                android:textColor="#FF000000"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/user_time1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="2.5dp"
-                android:alpha="0.4000000059604645"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Oct 11, 01:19 AM"
-                android:textColor="#FF1A1A1A"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,TextContrastCheck,TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/user_name1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginBottom="14dp"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Ahmad Ibrahim"
-                android:textColor="#FF1A1A1A"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText,TextSizeCheck" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="305dp"
-                android:layout_marginBottom="9dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_profile_pic2" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="296dp"
-                android:background="@drawable/user_oval"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:id="@+id/user_request_icon1"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="299dp"
-                android:layout_marginBottom="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_request_icon" />
-
-        </RelativeLayout>
-        &lt;!&ndash;            item4&ndash;&gt;
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="3.5dp"
-                android:fontFamily="@font/jua"
-                android:gravity="end|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="-$21.30"
-                android:textColor="#FF000000"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="2.5dp"
-                android:alpha="0.4000000059604645"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Oct 07, 09:10 PM"
-                android:textColor="#FF1A1A1A"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,TextContrastCheck,TextSizeCheck" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginBottom="14dp"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Reem Khaled"
-                android:textColor="#FF1A1A1A"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText,TextSizeCheck" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="305dp"
-                android:layout_marginBottom="9dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_profile_pic3" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="296dp"
-                android:background="@drawable/user_oval"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="299dp"
-                android:layout_marginBottom="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/drawable_image_1"
-                tools:ignore="ImageContrastCheck" />
-        </RelativeLayout>
-
-        &lt;!&ndash;            item5&ndash;&gt;
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/user_balance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="3.5dp"
-                android:fontFamily="@font/jua"
-                android:gravity="end|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="+$09.00"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/user_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="2.5dp"
-                android:alpha="0.4000000059604645"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Oct 04, 05:45 AM"
-                android:textColor="#FF1A1A1A"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,TextContrastCheck,TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="57dp"
-                android:layout_marginBottom="14dp"
-                android:fontFamily="@font/jua"
-                android:gravity="start|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Hiba Saleh"
-                android:textColor="#FF1A1A1A"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText,TextSizeCheck" />
-
-            <ImageView
-                android:id="@+id/user_profile_pic"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="305dp"
-                android:layout_marginBottom="9dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_profile_pic4" />
-
-            <ImageView
-                android:id="@+id/user_oval_pic"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="296dp"
-                android:background="@drawable/user_oval"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:id="@+id/user_request_icon"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="299dp"
-                android:layout_marginBottom="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/user_request_icon" />
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

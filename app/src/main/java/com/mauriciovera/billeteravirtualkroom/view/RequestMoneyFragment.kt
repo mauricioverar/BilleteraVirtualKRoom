@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-//import com.mauriciovera.billeteravirtualkroom.R
 import com.mauriciovera.billeteravirtualkroom.databinding.FragmentRequestMoneyBinding
 
 class RequestMoneyFragment : Fragment() {
@@ -21,7 +20,6 @@ class RequestMoneyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentRequestMoneyBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,11 +29,11 @@ class RequestMoneyFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
         binding.left.setOnClickListener {
-            navController.popBackStack() // volver a la pantalla anterior
+            navController.popBackStack()
         }
 
         binding.btnTransRequestMoney.setOnClickListener {
-            if (binding.etAmount.text.toString().isNotEmpty()){
+            if (binding.etAmount.text.toString().isNotEmpty()) {
                 toast()
             } else {
                 Toast.makeText(context, "Ingrese una cantidad", Toast.LENGTH_SHORT).show()
@@ -44,6 +42,10 @@ class RequestMoneyFragment : Fragment() {
     }
 
     private fun toast() {
-        Toast.makeText(context, "Transacción realizada ${binding.etAmount.text.toString().toDouble()}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            context,
+            "Transacción realizada ${binding.etAmount.text.toString().toDouble()}",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

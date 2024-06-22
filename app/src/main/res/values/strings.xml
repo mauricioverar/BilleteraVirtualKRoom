@@ -51,16 +51,12 @@
     <string name="pencil">pencil</string>
 
     <string name="imagen">Imagen</string>
-    <!--    <string name="description">TextView</string>-->
-    <string name="txduration">TextView</string>
 
     <string name="name">Nombre</string>
     <string name="date">Fecha</string>
     <string name="rating">Rating</string>
-    <!--<string name="date">Date</string>-->
     <string name="txname">TextView</string>
     <string name="txlocate">TextView</string>
-    <string name="buy_tickets">Comprar Entradas</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splashscreen">SplashScreen</string>

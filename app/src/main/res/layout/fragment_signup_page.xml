@@ -32,8 +32,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
-            android:onClick="@{() -> viewModel.saveUser()}" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
         <!--ya tiene cuenta-->
         <Button
             android:id="@+id/btnGoToLogin"
