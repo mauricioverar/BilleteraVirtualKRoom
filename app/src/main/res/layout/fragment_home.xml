@@ -47,9 +47,10 @@
 
         <ImageView
             android:id="@+id/path_ek7"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_alignEnd="@id/rectangle_ek12"
+            android:layout_marginStart="0dp"
             android:src="@drawable/path_ek7"
             tools:ignore="ImageContrastCheck" />
 
@@ -60,11 +61,13 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="120dp"
             android:fontFamily="@font/jua"
+            android:text="@string/hola"
             android:textColor="@color/white"
             android:textSize="16sp"
             tools:ignore="TextContrastCheck,TextSizeCheck" />
 
         <TextView
+            android:id="@+id/tvBalance"
             android:layout_width="wrap_content"
             android:layout_height="52dp"
             android:layout_marginStart="30dp"
@@ -94,8 +97,9 @@
             android:layout_marginStart="320dp"
             android:layout_marginTop="48dp"
             android:contentDescription="@string/profile_picture"
-            android:src="@drawable/profile_picture"
+            android:src="@drawable/user"
             tools:ignore="ImageContrastCheck" />
+<!--        android:src="@drawable/profile_picture"-->
 
         <ImageView
             android:layout_width="24dp"

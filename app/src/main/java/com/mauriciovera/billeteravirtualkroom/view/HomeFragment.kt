@@ -24,6 +24,8 @@ import com.mauriciovera.billeteravirtualkroom.viewmodel.DatosViewModel
 class HomeFragment : Fragment() {
 
     private var username: String? = null
+    private var balance: String? = null
+
 
     private var _binding: FragmentHomeBinding? = null
     private val viewModel: DatosViewModel by activityViewModels()//viewModel
@@ -49,10 +51,13 @@ class HomeFragment : Fragment() {
         //recibiendo dato **********************************************
         arguments?.let { bundle ->
             username = bundle.getString("username")
+            balance = bundle.getString("balance")
             Log.d("selected ", username.toString()) //ok
-            val name = username?.substringBefore("_")
+            val name = username?.substringBefore("_") // "Sara_moli.na@hotmail.com" // "Sara"
             //username = username?.split("_")//uppercase()
             binding.tvUsername.text = binding.root.context.getString(R.string.hello, name)
+            binding.tvBalance.text = binding.root.context.getString(R.string.balance, balance)
+            //binding.tvBalance.text = binding.root.context.getString(R.string.balance, "120")
         }
 
 

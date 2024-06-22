@@ -22,7 +22,7 @@ class SignupViewModel : ViewModel() {
     //LiveData público que expone el resultado del signup a la vista
     val signupResult: LiveData<String> = _signupResult
 
-    fun signup(firstName: String, lastName: String, email: String, password: String, points: Double) {
+    fun signup(firstName: String, lastName: String, email: String, password: String, points: Double, roleId: Int) {
         //corrutina en el viewModelScope.
         viewModelScope.launch {
             //instancia de LoginService utilizando RetrofitClient.
@@ -30,7 +30,7 @@ class SignupViewModel : ViewModel() {
             //llamada a la función login de LoginService.
             Log.d("result Signupviewmodel", email.toString() + password.toString())//ok
 
-            serviceSignup.postUsers(UserDetailsModel(firstName, lastName, email, password, points)).enqueue(object :
+            serviceSignup.postUsers(UserDetailsModel(firstName, lastName, email, password, points, roleId)).enqueue(object :
                 Callback<SignupResponse> {
                 //implementación de Callback para manejar la respuesta de la llamada a la API.
                 override fun onResponse(

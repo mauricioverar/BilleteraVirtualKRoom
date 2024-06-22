@@ -63,11 +63,12 @@ class SignupPageFragment : Fragment() {
     "createdAt": "2024-06-20T22:45:57.991Z"
     }
     {
-    "first_name": "Sisa", Samy
+    "first_name": "Suny", Samy, Soyo
     "last_name": "Molina",
-    "email": "Sisa_moli.na@hotmail.com",
+    "email": "Suny_moli.na@hotmail.com",
     "password": "beta33",
-    "points": 124.57
+    "points": 120.00,
+    "roleId": 1
 }
         * */
 
@@ -77,7 +78,8 @@ class SignupPageFragment : Fragment() {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
             val confirmPassword = binding.etRePassword.text.toString().trim()
-            val points = 124.57 // carga inicial
+            val points = 120.00 // carga inicial 124.57
+            val roleId = 1 //   "roleId": 1
 
             Log.d("result email, password", email.toString() + password.toString())
 
@@ -111,7 +113,7 @@ class SignupPageFragment : Fragment() {
             }
 
             // signup
-            viewModel.signup(firstName, lastName, email, password, points)
+            viewModel.signup(firstName, lastName, email, password, points, roleId)
 
             //navController.navigate(R.id.action_signupPageFragment_to_newSignupFragment)
 

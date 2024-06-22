@@ -72,6 +72,14 @@ class LoginPageFragment : Fragment() {
     {
     "email": "Sara_moli.na@hotmail.com",
     "password": "alfa22"
+
+
+    "first_name": "Soyo",Sam
+    "last_name": "Molina",
+    "email": "Sam_moli.na@hotmail.com",
+    "password": "beta33",
+    "points": 120,
+    "roleId": 1,
     }
      */
 
@@ -122,6 +130,7 @@ class LoginPageFragment : Fragment() {
         }
         //Observa loginResult
         viewModel.loginResult.observe(viewLifecycleOwner) { result ->
+
             updateUI(result)//Actualiza la UI con el resultado:
         }
     }
@@ -130,12 +139,22 @@ class LoginPageFragment : Fragment() {
         /*binding.txtResult.visibility = View.VISIBLE // tomar elemento en xml y cambiar visibilidad
         binding.txtResult.text = result // mostrar //token: QpwL5tke4Pnpja7X4
         */
-        Log.d("result", result);
-        if (result == "Login successful") {
+
+        val partes = result.split("|")
+        val stringOriginal = partes[0]
+        val intOriginal = partes[1].toInt()
+        val stringName = partes[2]
+
+
+        Log.d("result datos", stringOriginal + intOriginal.toString() + stringName) //Login successful140 //[Login successful, 140]
+
+        if (stringOriginal == "Login successful") {
             //navController.navigate(R.id.action_loginPageFragment_to_HomeFragment(username = binding.etEmail.text.toString().trim()))
 
+            //val balance = 120
             val bundle = Bundle().apply {
-                putString("username", binding.etEmail.text.toString().trim())
+                putString("username", stringName) // y points ***
+                putString("balance", intOriginal.toString())
             }
             findNavController().navigate(R.id.action_loginPageFragment_to_HomeFragment, bundle)
         } else {

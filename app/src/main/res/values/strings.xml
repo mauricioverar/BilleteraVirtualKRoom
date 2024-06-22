@@ -27,6 +27,7 @@
     <string name="login_string">Login</string>
 
     <string name="hello">Hola %1$s !</string>
+    <string name="balance">$%1$s</string>
     <string name="total_balance_number_string">$124.57</string>
     <string name="total_balance_string">Balance Total</string>
     <string name="send_money_string">Enviar Dinero</string>
@@ -66,5 +67,6 @@
     <string name="valor">valor</string>
     <string name="valor_mas">+$ %1$s</string>
     <string name="valor_menos">-$ %1$s</string>
+    <string name="hola">Hola</string>
 
 </resources>

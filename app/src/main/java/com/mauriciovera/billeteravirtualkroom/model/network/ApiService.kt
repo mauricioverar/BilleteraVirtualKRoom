@@ -6,9 +6,11 @@ import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
 import com.mauriciovera.billeteravirtualkroom.model.response.SignupResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -21,12 +23,11 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     /// auth + /login
     @POST(Constants.API_PATH + Constants.LOGIN_PATH)
-    fun login(@Body data: UserModel): Call<LoginResponse> 
-    //suspend
+    fun login(@Body data: UserModel): Call<LoginResponse>
     //suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 
     @GET("auth/me")
-    suspend fun getInfoMe()
+    fun getInfoMe(@Header("Authorization") token: String): Call<UserDetailsModel> //Response<UserModel> ok2
 
     // * Users
     @POST("users")
