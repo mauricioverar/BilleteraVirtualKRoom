@@ -43,13 +43,59 @@ class LoginPageFragment : Fragment() {
         val emailRegex = "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
         //val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         /*
-    {
+    { signup ********************
     "first_name": "Soyo",Sam
     "last_name": "Molina",
     "email": "Sam_moli.na@hotmail.com",
     "password": "beta33",
     "points": 120,
     "roleId": 1,
+
+    auth/login **********************
+    "email": "Soyo_moli.na@hotmail.com",
+    "password": "beta33"
+
+    users/id ********************
+    "id": 3646,
+    "first_name": "Soyo",
+    "last_name": "Molina",
+    "email": "Soyo_moli.na@hotmail.com",
+    "password": "$2b$10$/1.yxiDaHDtVVIuayD/0euKgdOyc0FCnFPvgbfKfpVLYByJd8ClTW",
+    "points": 120,
+    "roleId": 1,
+    "createdAt": "2024-06-20T23:31:01.000Z",
+    "updatedAt": "2024-06-20T23:31:01.000Z"
+
+    account/me ****************
+    "id": 2317,
+    "money": 150,
+    "isBlocked": false,
+    "userId": 3646,
+    "updatedAt": "2024-06-24T20:31:55.232Z",
+    "createdAt": "2024-06-24T20:31:55.232Z"
+
+    auth/me *************
+    "id": 3646,
+    "first_name": "Soyo",
+    "last_name": "Molina",
+    "email": "Soyo_moli.na@hotmail.com",
+    "password": "$2b$10$/1.yxiDaHDtVVIuayD/0euKgdOyc0FCnFPvgbfKfpVLYByJd8ClTW",
+    "points": 120,
+    "roleId": 1,
+    "createdAt": "2024-06-20T23:31:01.000Z",
+    "updatedAt": "2024-06-20T23:31:01.000Z"
+
+    transactions// ******************
+    "id": 6533,
+    "amount": 500,
+    "concept": "Pago de honorarios",
+    "date": "2022-10-26T15:00:00.000Z",
+    "type": "topup|payment",
+    "accountId": 1,
+    "userId": 3645,
+    "to_account_id": 5,
+    "updatedAt": "2024-06-24T20:57:13.851Z",
+    "createdAt": "2024-06-24T20:57:13.851Z"
     }
      */
 

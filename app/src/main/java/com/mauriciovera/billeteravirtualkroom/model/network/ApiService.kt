@@ -16,29 +16,34 @@ import retrofit2.http.POST
 //import retrofit2.http.PUT
 //import retrofit2.http.Path
 
-interface ApiService {
+interface ApiService { // consumir 4 endpoint 1-signup 2-login 3-me 4-users
 
     // * Authentication
+
+    // 1-Login
     @Headers("Content-Type: application/json")
-    /// auth + /login
+    /// auth + /+ Login ****************************
     @POST(Constants.API_PATH + Constants.LOGIN_PATH)
     fun login(@Body data: UserModel): Call<LoginResponse>
 
-    @GET("auth/me")
+    // 2 -me
+    @GET("auth/me") // **************************************
     fun getInfoMe(@Header("Authorization") token: String): Call<UserDetailsModel> //Response<UserModel> ok2
 
+    // 3-signup
     // * Users
-    @POST("users")
+    @POST("users") // ***************************************
     fun postUsers(@Body data: UserDetailsModel): Call<SignupResponse>
     //suspend fun postUsers
 
-    /*@GET("users")
+    // 4-users
+    /*@GET("users") // **************************************************
     suspend fun getUsers()*/
 
-    /*@GET("users/{id}")
+    /*@GET("users/{id}") // **************************************************
     suspend fun getUsersId(@Path("id") id: Int)*/
 
-    /*@PUT("users/{id}")
+    /*@PUT("users/{id}") // **************************************************
     suspend fun putUsersId(@Path("id") id: Int, @Body data: UserModel)*/
 
     /*@DELETE("users/{id}")
@@ -73,13 +78,13 @@ interface ApiService {
     suspend fun deleteRolesId(@Path("id") id: Int)*/
 
     // * Accounts
-    /*@POST("accounts")
+    /*@POST("accounts") // ***************************************
     suspend fun postAccounts(@Body data: UserModel)*/
 
-    /*@GET("accounts")
+    /*@GET("accounts") // **************************************
     suspend fun getAccounts()*/
 
-    /*@GET("accounts/me")
+    /*@GET("accounts/me") // **************************************
     suspend fun getAccountsMe()*/
 
     /*@POST("accounts/{id}")
@@ -95,7 +100,7 @@ interface ApiService {
     suspend fun deleteAccountsId(@Path("id") id: Int)*/
 
     // * Transactions
-    /*@POST("transactions")
+    /*@POST("transactions") // ***************************************
     suspend fun postTransactions(@Body data: UserModel)*/
 
     /*@GET("transactions")

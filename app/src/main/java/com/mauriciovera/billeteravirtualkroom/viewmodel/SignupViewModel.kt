@@ -47,6 +47,7 @@ class SignupViewModel : ViewModel() {
                 ) {
                     when (response.code()) {
                         200 -> {
+                            // crear account ****************************
                             _signupResult.value = "Signup successful"
                         }
 
