@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
             Log.d("selected ", username.toString()) //ok
             val name = username?.substringBefore("_")
             binding.tvUsername.text = binding.root.context.getString(R.string.hello, name)
-            binding.tvBalance.text = binding.root.context.getString(R.string.balance, balance)
+            //binding.tvBalance.text = binding.root.context.getString(R.string.balance, balance)
 
             if (token != null) {
                 Log.d("result home prefs token", token)//ok
@@ -73,7 +73,31 @@ class HomeFragment : Fragment() {
         }
         viewModelHome.homeResult.observe(viewLifecycleOwner) {
             it?.let {
-                Log.d("result *** home result", it.toString())
+                Log.d("result *** hh", it.toString())
+
+                val partes = it.split("|")
+                val stringOriginal = partes[0]
+                val intOriginal = partes[1].toDouble() // 150.0
+                val monto = partes[3].toDouble()
+                Log.d("result monto", monto.toString()) // 500
+
+                binding.tvBalance.text = binding.root.context.getString(R.string.balance, intOriginal.toString())
+
+                val dataList = partes[2]
+                Log.d("result *** hh", stringOriginal.toString())
+                Log.d("result *** hh", intOriginal.toString())
+                Log.d("result *** hh", dataList.toString())
+                //val monto = dataList.amount?.toDouble()
+                //Log.d("result *** hh", dataList.amount.toString())
+
+
+                val list = dataList.split(",")
+                Log.d("result *** hh", list.toString())
+                Log.d("result *** hh", list.size.toString())
+                Log.d("result *** hh", list[0].toString())
+                Log.d("result *** hh", list[1].toString())
+                Log.d("result *** hh", list[2].toString())
+
             }
         }
 

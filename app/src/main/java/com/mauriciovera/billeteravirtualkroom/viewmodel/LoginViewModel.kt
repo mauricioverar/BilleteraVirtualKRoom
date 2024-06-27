@@ -59,6 +59,47 @@ class LoginViewModel : ViewModel() {
                                                         datos?.first_name.toString() + datos?.points.toString()
                                                     )
 
+                                                    try {
+                                                        Log.d("result try Bearer ", token)
+                                                        serviceLogin.getInfoMe("Bearer $token")
+                                                            .enqueue(object : Callback<UserDetailsModel> {
+                                                                override fun onResponse(
+                                                                    call: Call<UserDetailsModel>,
+                                                                    respuesta: Response<UserDetailsModel>
+                                                                ) {
+                                                                    if (respuesta.isSuccessful) {
+                                                                        val datos = respuesta.body()
+                                                                        Log.d("result body", datos.toString())
+                                                                        Log.d(
+                                                                            "result body",
+                                                                            datos?.first_name.toString() + datos?.points.toString()
+                                                                        )
+
+                                                                        val monto = datos?.points?.toInt()
+                                                                        _userBalance.value = monto.toString()
+                                                                        Log.d("result monto", monto.toString())
+                                                                        val msj = "Login successful"
+                                                                        _loginResult.value =
+                                                                            "${msj}|${_userBalance.value}|${datos?.first_name.toString()}"
+                                                                    } else {
+                                                                        Log.d(
+                                                                            "result error",
+                                                                            respuesta.errorBody().toString()
+                                                                        )
+                                                                    }
+                                                                }
+
+                                                                override fun onFailure(
+                                                                    p0: Call<UserDetailsModel>,
+                                                                    p1: Throwable
+                                                                ) {
+                                                                    Log.d("result error", p1.message.toString())
+                                                                }
+                                                            })
+                                                    } catch (e: Exception) {
+                                                        Log.d("result error", e.message.toString())
+                                                    }
+
                                                     val monto = datos?.points?.toInt()
                                                     _userBalance.value = monto.toString()
                                                     Log.d("result monto", monto.toString())
