@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.mauriciovera.billeteravirtualkroom.databinding.FragmentHomeBinding
 import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.prefs
 import com.mauriciovera.billeteravirtualkroom.view.adapter.DatosListAdapter
 import com.mauriciovera.billeteravirtualkroom.viewmodel.DatosViewModel
+import com.mauriciovera.billeteravirtualkroom.viewmodel.HomeViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -26,7 +28,9 @@ class HomeFragment : Fragment() {
 
 
     private var _binding: FragmentHomeBinding? = null
-    private val viewModel: DatosViewModel by activityViewModels()
+
+    //private val viewModel: DatosViewModel by activityViewModels()
+    private val viewModelHome: HomeViewModel by viewModels()
 
     private lateinit var navController: NavController
 
@@ -46,13 +50,31 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
+        val token = prefs.getToken()
+
+
         arguments?.let { bundle ->
             username = bundle.getString("username")
             balance = bundle.getString("balance")
+
+            //token = bundle.getString("token")//.toString()
+
+
             Log.d("selected ", username.toString()) //ok
             val name = username?.substringBefore("_")
             binding.tvUsername.text = binding.root.context.getString(R.string.hello, name)
             binding.tvBalance.text = binding.root.context.getString(R.string.balance, balance)
+
+            if (token != null) {
+                Log.d("result home prefs token", token)//ok
+                viewModelHome.transactions()//token//.toString()//
+
+            }
+        }
+        viewModelHome.homeResult.observe(viewLifecycleOwner) {
+            it?.let {
+                Log.d("result *** home result", it.toString())
+            }
         }
 
         val adapter = DatosListAdapter()
@@ -72,7 +94,7 @@ class HomeFragment : Fragment() {
         }
 
         //,Observer
-        viewModel.getDatos().observe(viewLifecycleOwner) {
+        /*viewModel.getDatos().observe(viewLifecycleOwner) {
 
             it?.let {
 
@@ -87,12 +109,12 @@ class HomeFragment : Fragment() {
             it.let {
                 Log.d("SELECCION", it.toString())
             }
-        }
+        }*/
 
-        val token = prefs.getToken()
+        /*val token = prefs.getToken()
         if (token != null) {
             Log.d("result home prefs token", token)
-        }
+        }*/
     }
 
     override fun onDestroyView() {

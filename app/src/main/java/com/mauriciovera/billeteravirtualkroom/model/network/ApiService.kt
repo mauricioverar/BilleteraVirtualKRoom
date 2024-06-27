@@ -5,6 +5,7 @@ import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
 import com.mauriciovera.billeteravirtualkroom.model.response.SignupResponse
+import com.mauriciovera.billeteravirtualkroom.model.response.TransactionResponse
 import retrofit2.Call
 import retrofit2.http.Body
 //import retrofit2.http.DELETE
@@ -21,10 +22,11 @@ interface ApiService { // consumir 4 endpoint 1-signup 2-login 3-me 4-users
     // * Authentication
 
     // 1-Login
+
     @Headers("Content-Type: application/json")
     /// auth + /+ Login ****************************
     @POST(Constants.API_PATH + Constants.LOGIN_PATH)
-    fun login(@Body data: UserModel): Call<LoginResponse>
+    fun login(@Body data: UserModel): Call<LoginResponse>//<LoginResponse>
 
     // 2 -me
     @GET("auth/me") // **************************************
@@ -103,8 +105,9 @@ interface ApiService { // consumir 4 endpoint 1-signup 2-login 3-me 4-users
     /*@POST("transactions") // ***************************************
     suspend fun postTransactions(@Body data: UserModel)*/
 
-    /*@GET("transactions")
-    suspend fun getTransactions()*/
+    @GET("transactions")
+    fun getTransactions(@Header("Authorization") token: String): Call<TransactionResponse>
+    //suspend
 
     /*@GET("transactions/{id}")
     suspend fun getTransactionsId(@Path("id") id: Int)*/
