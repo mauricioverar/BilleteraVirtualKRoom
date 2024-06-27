@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.prefs
 import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
@@ -39,6 +40,8 @@ class LoginViewModel : ViewModel() {
                                 Log.d("result body", result.toString())
                                 val token = result?.accessToken.toString()
                                 Log.d("result token", token)
+
+                                prefs.saveToken(token)//"Bearer $token"
 
                                 try {
                                     Log.d("result try Bearer ", token)

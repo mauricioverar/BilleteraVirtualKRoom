@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface DatosApiService {
+
     @GET("games")
     suspend fun getDatos(): Response<List<DatoModel>>
 

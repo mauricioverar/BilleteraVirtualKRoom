@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mauriciovera.billeteravirtualkroom.R
 import com.mauriciovera.billeteravirtualkroom.databinding.FragmentHomeBinding
+import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.prefs
 import com.mauriciovera.billeteravirtualkroom.view.adapter.DatosListAdapter
 import com.mauriciovera.billeteravirtualkroom.viewmodel.DatosViewModel
 
@@ -86,6 +87,11 @@ class HomeFragment : Fragment() {
             it.let {
                 Log.d("SELECCION", it.toString())
             }
+        }
+
+        val token = prefs.getToken()
+        if (token != null) {
+            Log.d("result home prefs token", token)
         }
     }
 
