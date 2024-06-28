@@ -20,11 +20,11 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     /// Login
     @POST(Constants.API_PATH + Constants.LOGIN_PATH)
-    fun login(@Body data: UserModel): Call<LoginResponse>//<LoginResponse>
+    suspend fun login(@Body data: UserModel): LoginResponse//Call<LoginResponse>
 
     // me
     @GET("auth/me")
-    fun getInfoMe(@Header("Authorization") token: String): Call<UserDetailsModel> //Response<UserModel> ok2
+    suspend fun getInfoMe(@Header("Authorization") token: String): UserDetailsModel?//Call<UserDetailsModel> //Response<UserModel> ok2
 
     // signup
     // * Users
@@ -33,7 +33,7 @@ interface ApiService {
 
     // * Accounts
     @GET("accounts/me")
-    fun getAccountsMe(@Header("Authorization") token: String): Call<List<UserAccountModel>>//Call<List<AccountResponse>>
+    fun getAccountsMe(@Header("Authorization") token: String): Call<List<UserAccountModel>>
 
     // * Transactions
     @GET("transactions")

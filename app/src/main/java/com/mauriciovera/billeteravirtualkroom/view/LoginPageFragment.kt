@@ -151,7 +151,9 @@ class LoginPageFragment : Fragment() {
             }
             findNavController().navigate(R.id.action_loginPageFragment_to_HomeFragment, bundle)
         } else {
-            Toast.makeText(context, "Email o contraseña no registrado", Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, "Email o contraseña no registrado", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, stringOriginal, Toast.LENGTH_LONG).show()
+
         }
     }
 
