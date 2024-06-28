@@ -4,7 +4,7 @@ import com.mauriciovera.billeteravirtualkroom.model.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitHelp {
+object RetrofitHelper {
     private var instance: Retrofit? = null
     lateinit var getInstance: Retrofit
 

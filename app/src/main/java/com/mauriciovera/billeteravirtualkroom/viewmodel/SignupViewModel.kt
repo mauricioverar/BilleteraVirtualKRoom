@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
-import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelp
+import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelper
 import com.mauriciovera.billeteravirtualkroom.model.response.SignupResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -27,7 +27,7 @@ class SignupViewModel : ViewModel() {
         roleId: Int
     ) {
         viewModelScope.launch {
-            val serviceSignup = RetrofitHelp.getInstance().create(ApiService::class.java)
+            val serviceSignup = RetrofitHelper.getInstance().create(ApiService::class.java)
             Log.d("result Signupviewmodel", email + password)
 
             serviceSignup.postUsers(

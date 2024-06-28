@@ -1,6 +1,6 @@
 package com.mauriciovera.billeteravirtualkroom
 
-import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelp
+import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelper
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Assert
@@ -32,8 +32,8 @@ class RetrofitWalletInstanceTest {
             .baseUrl(expectedBaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        RetrofitHelp.getInstance = retrofit
-        val retrofitInstance = RetrofitHelp.getInstance
+        RetrofitHelper.getInstance = retrofit
+        val retrofitInstance = RetrofitHelper.getInstance
         Assert.assertEquals(expectedBaseUrl, retrofitInstance.baseUrl().toString())
         //import junit assert
     }

@@ -4,7 +4,6 @@ import com.mauriciovera.billeteravirtualkroom.model.Constants
 import com.mauriciovera.billeteravirtualkroom.model.UserAccountModel
 import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
-import com.mauriciovera.billeteravirtualkroom.model.response.AccountResponse
 import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
 import com.mauriciovera.billeteravirtualkroom.model.response.SignupResponse
 import com.mauriciovera.billeteravirtualkroom.model.response.TransactionResponse

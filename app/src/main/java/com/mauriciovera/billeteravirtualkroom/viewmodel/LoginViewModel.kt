@@ -9,7 +9,7 @@ import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.pr
 import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
-import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelp
+import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelper
 import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -25,7 +25,7 @@ class LoginViewModel : ViewModel() {
 
     fun login(email: String, password: String) {
         viewModelScope.launch {
-            val serviceLogin = RetrofitHelp.getInstance().create(ApiService::class.java)
+            val serviceLogin = RetrofitHelper.getInstance().create(ApiService::class.java)
             Log.d("result viewmodel", email + password)
 
             serviceLogin.login(UserModel(email, password))
