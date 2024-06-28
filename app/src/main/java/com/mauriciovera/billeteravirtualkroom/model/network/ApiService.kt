@@ -15,28 +15,26 @@ import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-interface ApiService { // consumir endpoint 1-login 2-me 3-signup 4-users 5- accounts 6-transactions
+// consumir endpoint 1-login 2-me 3-signup 4-users 5- accounts 6-transactions
+interface ApiService {
 
-    // * Authentication
-
-    // Login
     @Headers("Content-Type: application/json")
-    /// auth + /+ Login ****************************
+    /// Login
     @POST(Constants.API_PATH + Constants.LOGIN_PATH)
     fun login(@Body data: UserModel): Call<LoginResponse>//<LoginResponse>
 
     // me
-    @GET("auth/me") // **************************************
+    @GET("auth/me")
     fun getInfoMe(@Header("Authorization") token: String): Call<UserDetailsModel> //Response<UserModel> ok2
 
     // signup
     // * Users
-    @POST("users") // ***************************************
+    @POST("users")
     fun postUsers(@Body data: UserDetailsModel): Call<SignupResponse>
 
     // * Accounts
-    @GET("accounts/me") // **************************************
-    fun getAccountsMe(@Header("Authorization") token: String): Call<List<AccountResponse>>//Response<List<Account>>
+    @GET("accounts/me")
+    fun getAccountsMe(@Header("Authorization") token: String): Call<List<UserAccountModel>>//Call<List<AccountResponse>>
 
     // * Transactions
     @GET("transactions")

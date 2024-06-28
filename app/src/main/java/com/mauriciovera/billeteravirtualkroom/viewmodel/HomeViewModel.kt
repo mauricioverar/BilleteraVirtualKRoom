@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mauriciovera.billeteravirtualkroom.model.UserAccountModel
 import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.prefs
 import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
 import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelp
@@ -18,8 +19,8 @@ import retrofit2.awaitResponse
 
 class HomeViewModel: ViewModel() {
 
-    private val _accounts = MutableLiveData<List<AccountResponse>>() // Lista de AccountResponse
-    val accounts: LiveData<List<AccountResponse>> = _accounts
+    private val _accounts = MutableLiveData<List<UserAccountModel>>() // Lista de AccountResponse
+    val accounts: LiveData<List<UserAccountModel>> = _accounts
 
     private val _homeResult = MutableLiveData<String>()
     val homeResult: LiveData<String> = _homeResult
