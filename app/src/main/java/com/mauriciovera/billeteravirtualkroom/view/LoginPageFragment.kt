@@ -44,9 +44,9 @@ class LoginPageFragment : Fragment() {
         //val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         /*
     { signup ********************
-    "first_name": "Soyo",Sam
+    "first_name": "Soyo",Sam,Sue, Sizi, Sama,Sind
     "last_name": "Molina",
-    "email": "Sam_moli.na@hotmail.com",
+    "email": "Sam_moli.na@hotmail.com",Sizi_moli.na@hotmail.com, Sind_moli.na@hotmail.com
     "password": "beta33",
     "points": 120,
     "roleId": 1,
@@ -66,7 +66,7 @@ class LoginPageFragment : Fragment() {
     "createdAt": "2024-06-20T23:31:01.000Z",
     "updatedAt": "2024-06-20T23:31:01.000Z"
 
-    account/me ****************
+    account/me **************** money
     "id": 2317,
     "money": 150,
     "isBlocked": false,
@@ -74,7 +74,7 @@ class LoginPageFragment : Fragment() {
     "updatedAt": "2024-06-24T20:31:55.232Z",
     "createdAt": "2024-06-24T20:31:55.232Z"
 
-    auth/me *************
+    auth/me ************* id
     "id": 3646,
     "first_name": "Soyo",
     "last_name": "Molina",
@@ -136,11 +136,12 @@ class LoginPageFragment : Fragment() {
         val stringOriginal = partes[0]
         val intOriginal = partes[1].toInt()
         val stringName = partes[2]
+        val id = partes[3].toInt()
 
 
         Log.d(
             "result datos",
-            stringOriginal + intOriginal.toString() + stringName
+            stringOriginal + intOriginal.toString() + stringName + id
         )
 
         if (stringOriginal == "Login successful") {
@@ -148,6 +149,7 @@ class LoginPageFragment : Fragment() {
             val bundle = Bundle().apply {
                 putString("username", stringName)
                 putString("balance", intOriginal.toString())
+                putInt("id", id)
             }
             findNavController().navigate(R.id.action_loginPageFragment_to_HomeFragment, bundle)
         } else {

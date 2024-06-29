@@ -38,7 +38,8 @@ class SignupPageFragment : Fragment() {
             navController.navigate(R.id.action_signupPageFragment_to_loginPageFragment)
         }
 
-        val emailRegex = "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
+        //val emailRegex = "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
+        val emailRegex = """^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$""".toRegex()
         //val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
 
         binding.btnGoToNewSignup.setOnClickListener {
@@ -52,20 +53,31 @@ class SignupPageFragment : Fragment() {
 
             Log.d("result email, password", email + password)
 
+            if (first_name.isEmpty()) {
+                Toast.makeText(context, "Nombre requerido", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (last_name.isEmpty()) {
+                Toast.makeText(context, "Apellido requerido", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if (password != confirmPassword) {
                 binding.etRePassword.error = "Las contraseñas no coinciden"
                 return@setOnClickListener
             }
 
-            if (binding.etEmail.text.toString().isEmpty()) {
+            if (email.isEmpty()) {
                 toastEmailEmpty()
                 return@setOnClickListener
             }
-            if (binding.etPassword.text.toString().isEmpty()) {
+            if (password.isEmpty()) {
                 toastPasswordEmpty()
                 return@setOnClickListener
             }
-            if (!binding.etEmail.text.toString().matches(emailRegex.toRegex())) {
+
+            //** arreglar regex
+            if (!binding.etEmail.text.toString().matches(emailRegex)) {
                 toastEmailFalse()
                 return@setOnClickListener
             }

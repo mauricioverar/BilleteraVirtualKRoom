@@ -25,6 +25,7 @@ class HomeFragment : Fragment() {
 
     private var username: String? = null
     private var balance: String? = null
+    private var id: Int? = null
 
 
     private var _binding: FragmentHomeBinding? = null
@@ -56,6 +57,7 @@ class HomeFragment : Fragment() {
         arguments?.let { bundle ->
             username = bundle.getString("username")
             balance = bundle.getString("balance")
+            id = bundle.getInt("id")
 
             //token = bundle.getString("token")//.toString()
 
@@ -67,7 +69,7 @@ class HomeFragment : Fragment() {
 
             if (token != null) {
                 Log.d("result home prefs token", token)//ok
-                viewModelHome.transactions()//token//.toString()//
+                viewModelHome.transactions(id!!)//token//.toString()//
 
             }
         }
@@ -78,25 +80,28 @@ class HomeFragment : Fragment() {
                 val partes = it.split("|")
                 val stringOriginal = partes[0]
                 val intOriginal = partes[1].toDouble() // 150.0
+                val data = partes[2]
                 val monto = partes[3].toDouble()
                 Log.d("result monto", monto.toString()) // 500
 
                 binding.tvBalance.text = binding.root.context.getString(R.string.balance, intOriginal.toString())
 
                 val dataList = partes[2]
-                Log.d("result *** hh", stringOriginal.toString())
-                Log.d("result *** hh", intOriginal.toString())
-                Log.d("result *** hh", dataList.toString())
+                Log.d("result *** stringOriginal", stringOriginal.toString())
+                Log.d("result *** intOriginal", intOriginal.toString())
+                Log.d("result *** dataList", dataList.toString())
                 //val monto = dataList.amount?.toDouble()
                 //Log.d("result *** hh", dataList.amount.toString())
+                Log.d("result *** data", data.toString())
 
 
                 val list = dataList.split(",")
-                Log.d("result *** hh", list.toString())
-                Log.d("result *** hh", list.size.toString())
-                Log.d("result *** hh", list[0].toString())
-                Log.d("result *** hh", list[1].toString())
-                Log.d("result *** hh", list[2].toString())
+                Log.d("result *** list", list.toString())
+                Log.d("result *** size", list.size.toString())
+                Log.d("result *** 0", list[0].toString())
+                Log.d("result *** 1", list[1].toString())
+                Log.d("result *** 2", list[2].toString())
+                Log.d("result *** 3", list[3].toString())
 
             }
         }
