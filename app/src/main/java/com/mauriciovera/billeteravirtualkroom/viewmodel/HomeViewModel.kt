@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.load.engine.Resource
+import com.mauriciovera.billeteravirtualkroom.model.TransactionModel
 import com.mauriciovera.billeteravirtualkroom.model.UserAccountModel
 import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.prefs
 import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
@@ -27,8 +28,9 @@ class HomeViewModel : ViewModel() {
     private val _postAccountResult = MutableLiveData<Resource<AccountResponse>>()
     val postAccountResult: LiveData<Resource<AccountResponse>> = _postAccountResult
 
-    private val _homeResult = MutableLiveData<String>()
-    val homeResult: LiveData<String> = _homeResult
+    //private val _homeResult = MutableLiveData<String>()
+    private val _homeResult = MutableLiveData<List<TransactionModel>>()
+    val homeResult: LiveData<List<TransactionModel>> = _homeResult
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
@@ -125,19 +127,7 @@ class HomeViewModel : ViewModel() {
                             "result body Home",
                             datos.toString()
                         ) // ok ********************************************************************************************************
-                        Log.d("result body size", datos?.data?.size.toString())
-                        Log.d("result body data", datos?.data.toString())
 
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.amount.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.concept.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.date.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.type.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.accountId.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.accountDestinationId.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.userId.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.createdAt.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.updatedAt.toString())
-                        Log.d("result body Home", datos?.data?.firstOrNull()?.id.toString())//***************************************
 
 
                         if (datos?.data?.size == 0) {
@@ -153,20 +143,33 @@ class HomeViewModel : ViewModel() {
                         //Log.d("result monto", monto.toString())
                         /*_homeResult.value =
                             "${msj}|${balance}|${datos?.toString()}|${monto}"*/
-                        _homeResult.value =
-                            "${msj}|${balance}|${datos?.data.toString()}|${monto}"
+                        //_homeResult.value = datos?.data as List<TransactionModel>
+
+                        //_homeResult.value = datos?.data as List<TransactionModel>
+
+                        _homeResult.value = datos?.data?.map { transaction ->
+                            TransactionModel(
+                                id = transaction.id,
+                                amount = transaction.amount,
+                                concept = transaction.concept,
+                                date = transaction.date,
+                                type = transaction.type?.toString() ?: "Desconocido"
+                            )
+                        } ?: emptyList() // Maneja el caso en que datos.data sea null
+
+                            //"${msj}|${balance}|${datos?.data}|${monto}"
                     } else {
                         Log.d(
                             "result error",
                             respuesta.errorBody().toString()
                         )
-                        _homeResult.value = "Error de conexión"
+                        //_homeResult.value = "Error de conexión"
                     }
                 }
 
                 override fun onFailure(p0: Call<TransactionResponse>, p1: Throwable) {
                     Log.d("result error", p1.message.toString())
-                    _homeResult.value = "Error de conexión|0"
+                   //_homeResult.value = "Error de conexión|0"
                 }
             })
     }

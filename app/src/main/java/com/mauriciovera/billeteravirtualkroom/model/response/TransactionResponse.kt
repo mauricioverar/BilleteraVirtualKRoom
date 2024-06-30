@@ -11,10 +11,10 @@ data class TransactionResponse(
 ) // ok
 
 data class Transaction<Date>(
-    val id: Int? = null,
+    val id: Int,
     val amount: Double,
     val concept: String,
-    val date: java.util.Date = Date(),
+    val date: Date,//java.util.Date = Date(),
     val type: TransactionType,
     val accountId: Int,
     @SerializedName("to_account_id")

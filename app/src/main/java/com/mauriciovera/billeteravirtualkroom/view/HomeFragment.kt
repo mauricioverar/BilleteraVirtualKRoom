@@ -6,17 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.mauriciovera.billeteravirtualkroom.R
 import com.mauriciovera.billeteravirtualkroom.databinding.FragmentHomeBinding
+import com.mauriciovera.billeteravirtualkroom.model.TransactionModel
 import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.prefs
-import com.mauriciovera.billeteravirtualkroom.view.adapter.DatosListAdapter
-import com.mauriciovera.billeteravirtualkroom.viewmodel.DatosViewModel
+import com.mauriciovera.billeteravirtualkroom.model.local.entities.TransactionsEntity
+import com.mauriciovera.billeteravirtualkroom.model.response.Transaction
+import com.mauriciovera.billeteravirtualkroom.view.adapter.TransactionAdapter
 import com.mauriciovera.billeteravirtualkroom.viewmodel.HomeViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -26,7 +32,6 @@ class HomeFragment : Fragment() {
     private var username: String? = null
     private var balance: String? = null
     private var id: Int? = null
-
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -41,10 +46,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,19 +56,14 @@ class HomeFragment : Fragment() {
 
         val token = prefs.getToken()
 
-
         arguments?.let { bundle ->
             username = bundle.getString("username")
             balance = bundle.getString("balance")
             id = bundle.getInt("id")
 
-            //token = bundle.getString("token")//.toString()
-
-
             Log.d("selected ", username.toString()) //ok
             val name = username?.substringBefore("_")
             binding.tvUsername.text = binding.root.context.getString(R.string.hello, name)
-            //binding.tvBalance.text = binding.root.context.getString(R.string.balance, balance)
 
             if (token != null) {
                 Log.d("result home prefs token", token)//ok
@@ -73,77 +71,90 @@ class HomeFragment : Fragment() {
 
             }
         }
-        viewModelHome.homeResult.observe(viewLifecycleOwner) {
-            it?.let {
-                Log.d("result *** hh", it.toString())
+        viewModelHome.homeResult.observe(viewLifecycleOwner) {result ->
+            result?.let {
+                Log.d("result *** hh", "Tamaño de la lista: ${result.size}")
 
-                val partes = it.split("|")
-                val stringOriginal = partes[0]
-                val intOriginal = partes[1].toDouble() // 150.0
-                val data = partes[2]
-                val monto = partes[3].toDouble()
-                Log.d("result monto", monto.toString()) // 500
+                Log.d("result *** hh", result.toString())//ok
 
-                binding.tvBalance.text = binding.root.context.getString(R.string.balance, intOriginal.toString())
+                // Mapea la lista de Transaction<Any?> a una lista de TransactionModel
+                val transactionsModelList = result.map { transaction ->
+                    TransactionModel(
+                        id = transaction.id,
+                        amount = transaction.amount,
+                        concept = transaction.concept,
+                        date = transaction.date,
+                        type = transaction.type?.toString() ?: "Desconocido"
+                    )
+                }
 
-                val dataList = partes[2]
-                Log.d("result *** stringOriginal", stringOriginal.toString())
-                Log.d("result *** intOriginal", intOriginal.toString())
-                Log.d("result *** dataList", dataList.toString())
-                //val monto = dataList.amount?.toDouble()
-                //Log.d("result *** hh", dataList.amount.toString())
-                Log.d("result *** data", data.toString())
+                // Crea el adaptador con los datos
+                val transactionAdapter = TransactionAdapter(transactionsModelList)
+                
+                Log.d("result *** transactionAdapter", transactionAdapter.toString())//com.mauriciovera.billeteravirtualkroom.view.adapter.TransactionAdapter@f978ad7
+                Log.d("result *** transactionAdapter", transactionAdapter.toString())
 
+                // 3. Configura el adaptador en el RecyclerView
+                binding.rvTransactions.adapter = transactionAdapter
+                
+                binding.rvTransactions.layoutManager = LinearLayoutManager(context)
 
-                val list = dataList.split(",")
-                Log.d("result *** list", list.toString())
-                Log.d("result *** size", list.size.toString())
-                Log.d("result *** 0", list[0].toString())
-                Log.d("result *** 1", list[1].toString())
-                Log.d("result *** 2", list[2].toString())
-                Log.d("result *** 3", list[3].toString())
+                binding.profilePicture.setOnClickListener {
+                    navController.navigate(R.id.action_HomeFragment_to_profilePageFragment)
+                }
 
+                binding.btnSendMoney.setOnClickListener {
+                    navController.navigate(R.id.action_HomeFragment_to_sendMoneyFragment)
+                }
+
+                binding.btnRequestMoney.setOnClickListener {
+                    navController.navigate(R.id.action_HomeFragment_to_requestMoneyFragment)
+                }
+
+                // Actualiza el adaptador
+                transactionAdapter.update(transactionsModelList)
             }
         }
+    }
 
-        val adapter = DatosListAdapter()
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+    private fun obtenerTransactionsDesdeResultado(result: String): List<TransactionsEntity> {
+        val transactionsList = mutableListOf<TransactionsEntity>()
 
-        binding.profilePicture.setOnClickListener {
-            navController.navigate(R.id.action_HomeFragment_to_profilePageFragment)
+         // 1. Obtén la lista de transacciones del resultado
+        val transactions = parseTransactionResponse(result) ?: emptyList() // No necesitas acceder a .data
+
+        // 2. Itera sobre la lista de Transaction y crea objetos TransactionsEntity
+        for (transaction in transactions) {
+            transactionsList.add(
+                TransactionsEntity(
+                    id = transaction.id,
+                    amount = transaction.amount,
+                    concept = transaction.concept,
+                    date = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH).parse(
+                        transaction.date.toString()
+                    ) ?: Date(),
+                    type = transaction.type.name//.type?.name ?: "Desconocido"
+                )
+            )
         }
 
-        binding.btnSendMoney.setOnClickListener {
-            navController.navigate(R.id.action_HomeFragment_to_sendMoneyFragment)
-        }
+        return transactionsList
 
-        binding.btnRequestMoney.setOnClickListener {
-            navController.navigate(R.id.action_HomeFragment_to_requestMoneyFragment)
-        }
+    }
 
-        //,Observer
-        /*viewModel.getDatos().observe(viewLifecycleOwner) {
+    /*private fun TransactionsEntity(id: Int, amount: Double, concept: String, date: String): TransactionsEntity {
 
-            it?.let {
+    }*/
 
-                Log.d("Listado", it.toString())
-                // fun de Adapter
-                adapter.update(it)
-            }
-
-        }
-
-        adapter.selectDato().observe(viewLifecycleOwner) {
-            it.let {
-                Log.d("SELECCION", it.toString())
-            }
-        }*/
-
-        /*val token = prefs.getToken()
-        if (token != null) {
-            Log.d("result home prefs token", token)
-        }*/
+    // Función auxiliar para parsear la cadena result a un objeto TransactionResponse
+    private fun parseTransactionResponse(result: String): List<Transaction<Any?>>? {
+        // Implementa la lógica para deserializar la cadena a un objeto TransactionResponse
+        // Ejemplo usando Gson:
+        val gson = Gson()
+        val listType = object : TypeToken<List<Transaction<Any?>>>() {}.type
+        return gson.fromJson(result, listType)
+        
+        // ...
     }
 
     override fun onDestroyView() {
