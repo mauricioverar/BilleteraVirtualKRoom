@@ -12,7 +12,6 @@ import com.mauriciovera.billeteravirtualkroom.model.response.SignupResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.HttpException
 import retrofit2.Response
 
 class SignupViewModel : ViewModel() {
@@ -47,7 +46,7 @@ class SignupViewModel : ViewModel() {
                     response: Response<SignupResponse>
                 ) {
                     when (response.code()) {
-                        in 200..201 -> { // Maneja los códigos 200 y 201
+                        in 200..201 -> {
                             _signupResult.value = "Signup successful"
                         }
 

@@ -17,7 +17,6 @@ class LoginViewModel : ViewModel() {
 
     val loginResult: LiveData<String> = _loginResult
 
-
     fun login(email: String, password: String) {
         viewModelScope.launch {
             val serviceLogin = RetrofitHelper.getInstance().create(ApiService::class.java)
@@ -34,21 +33,18 @@ class LoginViewModel : ViewModel() {
                     prefs.saveToken(token)
 
                     try {
-                        val userInfo = serviceLogin.getInfoMe(token) // **** nombre id
-                        val nombre = userInfo.first_name//.toString()
+                        val userInfo = serviceLogin.getInfoMe(token)
+                        val nombre = userInfo.first_name
                         val id = userInfo.id
 
                         if (nombre != null) {
                             Log.d("result User Info", userInfo.toString())
-                            //UserDetailsModel(first_name=Soyo, last_name=Molina, email=Soyo_moli.na@hotmail.com, password=$2b$10$/1.yxiDaHDtVVIuayD/0euKgdOyc0FCnFPvgbfKfpVLYByJd8ClTW, points=120.0, roleId=1)
-                            // ... resto de tu lógica ...
                             Log.d("result nombre", nombre+" "+id.toString())
                             val msj = "Login successful"
                             _loginResult.value =
                                 "${msj}|0|${nombre}|${id.toString()}"
 
                         } else {
-                            // Maneja el caso en que la respuesta de getInfoMe es nula
                             val msj = "Sin información del usuario"
 
                             Log.d("result User Info", msj)
@@ -58,25 +54,18 @@ class LoginViewModel : ViewModel() {
                     } catch (e: Exception) {
                         Log.d("result error userInfo", e.message.toString())
                         if (e is HttpException && e.code() == 401 || e is HttpException && e.code() == 403) {
-                            // Por ejemplo, redirige al usuario a la pantalla de inicio de sesión
-                            //_navigationEvent.value = NavigationEvent.NavigateToLogin
                             _loginResult.value = "Acceso denegado|0|0"
 
                         } else {
-                            // Maneja otros errores
-                            //_errorMessage.value = "Error de red: ${e.message}"
                             _loginResult.value = "Error email o pass|0"
                         }
                     }
 
-
                 } else {
-                    // Maneja el caso en que la respuesta es nula (puede indicar un error)
                     Log.d("result body", "Respuesta nula")
-                    // ... resto de tu lógica ...
                 }
             } catch (e: Exception) {
-                Log.d("result error result", e.message.toString())//HTTP 401 Unauthorized
+                Log.d("result error result", e.message.toString())
                 _loginResult.value = "Error email o pass|0|0|0"
             }
         }
