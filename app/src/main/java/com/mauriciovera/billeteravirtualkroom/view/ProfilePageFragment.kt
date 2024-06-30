@@ -39,7 +39,6 @@ class ProfilePageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_profile_page, container, false)
         _binding = FragmentProfilePageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -49,9 +48,6 @@ class ProfilePageFragment : Fragment() {
 
         arguments?.let { bundle ->
             username = bundle.getString("username")
-
-            /*Log.d("selected ", username.toString()) //ok
-            val name = username?.substringBefore("_")*/
             binding.username.text = binding.root.context.getString(R.string.usuario, username)
 
         }
