@@ -6,21 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mauriciovera.billeteravirtualkroom.model.UserApplication.Companion.prefs
-import com.mauriciovera.billeteravirtualkroom.model.UserDetailsModel
 import com.mauriciovera.billeteravirtualkroom.model.UserModel
 import com.mauriciovera.billeteravirtualkroom.model.network.ApiService
 import com.mauriciovera.billeteravirtualkroom.model.network.RetrofitHelper
-import com.mauriciovera.billeteravirtualkroom.model.response.LoginResponse
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.HttpException
-import retrofit2.Response
-import retrofit2.awaitResponse
 
 class LoginViewModel : ViewModel() {
     private val _loginResult = MutableLiveData<String>()
-    private val _userBalance = MutableLiveData<String>()
 
     val loginResult: LiveData<String> = _loginResult
 
@@ -42,17 +35,17 @@ class LoginViewModel : ViewModel() {
 
                     try {
                         val userInfo = serviceLogin.getInfoMe(token) // **** nombre id
-                        val nombre = userInfo?.first_name//.toString()
-                        val id = userInfo?.id
+                        val nombre = userInfo.first_name//.toString()
+                        val id = userInfo.id
 
                         if (nombre != null) {
                             Log.d("result User Info", userInfo.toString())
                             //UserDetailsModel(first_name=Soyo, last_name=Molina, email=Soyo_moli.na@hotmail.com, password=$2b$10$/1.yxiDaHDtVVIuayD/0euKgdOyc0FCnFPvgbfKfpVLYByJd8ClTW, points=120.0, roleId=1)
                             // ... resto de tu lógica ...
-                            Log.d("result nombre", nombre.toString()+" "+id.toString())
+                            Log.d("result nombre", nombre+" "+id.toString())
                             val msj = "Login successful"
                             _loginResult.value =
-                                "${msj}|0|${nombre.toString()}|${id.toString()}"
+                                "${msj}|0|${nombre}|${id.toString()}"
 
                         } else {
                             // Maneja el caso en que la respuesta de getInfoMe es nula
@@ -72,7 +65,7 @@ class LoginViewModel : ViewModel() {
                         } else {
                             // Maneja otros errores
                             //_errorMessage.value = "Error de red: ${e.message}"
-                            _loginResult.value = "Error 500 Internal info Server|0"
+                            _loginResult.value = "Error email o pass|0"
                         }
                     }
 
@@ -84,7 +77,7 @@ class LoginViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 Log.d("result error result", e.message.toString())//HTTP 401 Unauthorized
-                _loginResult.value = "Error 500 Internal token Server|0|0|0"
+                _loginResult.value = "Error email o pass|0|0|0"
             }
         }
     }

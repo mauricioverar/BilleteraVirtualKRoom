@@ -133,7 +133,7 @@ tools:context=".view.LoginSignupPageFragment">
     <!-- ya tiene cuenta? -->
     <Button
         android:id="@+id/btnGoToLogin"
-        android:layout_width="195dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginBottom="42dp"
         android:backgroundTint="@color/white"

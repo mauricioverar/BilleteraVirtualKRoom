@@ -64,5 +64,9 @@
     <string name="valor_mas">+$ %1$s</string>
     <string name="valor_menos">-$ %1$s</string>
     <string name="hola">Hola</string>
+    <string name="usuario">Usuario %1$s</string>
+    <string name="fecha">Fecha</string>
+    <string name="nombre">Nombre</string>
+    <string name="monto">Monto</string>
 
 </resources>

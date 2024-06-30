@@ -4,9 +4,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mauriciovera.billeteravirtualkroom.R
 import com.mauriciovera.billeteravirtualkroom.databinding.TransactionItemBinding
 import com.mauriciovera.billeteravirtualkroom.model.TransactionModel
-import com.mauriciovera.billeteravirtualkroom.model.local.entities.TransactionsEntity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -25,9 +25,15 @@ class TransactionAdapter(private var transactionsList: List<TransactionModel>) :
         fun bind(transaction: TransactionModel) {
             Log.d("TransactionAdapter", "bind: $transaction")
 
+            // usuario1 etc nombre
+            binding.tvUser.text = binding.tvUser.context.getString(
+                R.string.usuario, transaction.id.toString())
 
             //binding.tvConcept.text = transaction.concept
-            binding.tvAmount.text = transaction.amount.toString()
+            //binding.tvAmount.text = transaction.amount.toString()
+            binding.tvAmount.text = binding.tvAmount.context.getString(
+                R.string.valor_mas, transaction.amount.toString())
+
             // Formatea la fecha
             /*val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             binding.tvDate.text = dateFormat.format(transaction.date)*/
