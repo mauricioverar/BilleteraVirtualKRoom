@@ -52,7 +52,7 @@ class LoginPageFragment : Fragment() {
     "roleId": 1,
 
     auth/login **********************
-    "email":  Soyo_moli.na@hotmail.com
+    "email":  R
     "password": "beta33"
 
     users/id ********************

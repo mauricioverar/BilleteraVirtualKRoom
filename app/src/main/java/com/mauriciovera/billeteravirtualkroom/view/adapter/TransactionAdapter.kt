@@ -12,7 +12,6 @@ import java.util.Locale
 
 class TransactionAdapter(private var transactionsList: List<TransactionModel>) :
     RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
-    //private var transactionsList = listOf<TransactionsEntity>()
 
     fun update(transactions: List<TransactionModel>) {
         this.transactionsList = transactions
@@ -25,24 +24,16 @@ class TransactionAdapter(private var transactionsList: List<TransactionModel>) :
         fun bind(transaction: TransactionModel) {
             Log.d("TransactionAdapter", "bind: $transaction")
 
-            // usuario1 etc nombre
             binding.tvUser.text = binding.tvUser.context.getString(
                 R.string.usuario, transaction.id.toString())
-
-            //binding.tvConcept.text = transaction.concept
-            //binding.tvAmount.text = transaction.amount.toString()
             binding.tvAmount.text = binding.tvAmount.context.getString(
                 R.string.valor_mas, transaction.amount.toString())
 
-            // Formatea la fecha
-            /*val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            binding.tvDate.text = dateFormat.format(transaction.date)*/
-
             val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-            val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()) // Formato de salida deseado
+            val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-            val date = inputFormat.parse(transaction.date.toString()) // Parsea la fecha
-            binding.tvDate.text = outputFormat.format(date) // Formatea la fecha en el formato deseado
+            val date = inputFormat.parse(transaction.date.toString())
+            binding.tvDate.text = outputFormat.format(date)
 
             // type
             /*if (transaction.type == 1) {
