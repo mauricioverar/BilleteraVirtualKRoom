@@ -6,7 +6,7 @@ data class TransactionDetailModel(
     val id: Int,
     val amount: Double,
     val concept: String,
-    val date: Date,//String
+    val date: Date,
     val type: String,
     val accountId: Int,
     val userId: Int,
