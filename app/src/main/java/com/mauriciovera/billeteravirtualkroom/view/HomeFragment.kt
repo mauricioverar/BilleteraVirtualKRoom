@@ -100,7 +100,11 @@ class HomeFragment : Fragment() {
                 binding.rvTransactions.layoutManager = LinearLayoutManager(context)
 
                 binding.profilePicture.setOnClickListener {
-                    navController.navigate(R.id.action_HomeFragment_to_profilePageFragment)
+                    val bundle = Bundle().apply {
+                        putString("username", username)
+                    }
+                    //findNavController().navigate(R.id.action_loginPageFragment_to_HomeFragment, bundle)
+                    navController.navigate(R.id.action_HomeFragment_to_profilePageFragment, bundle)
                 }
 
                 binding.btnSendMoney.setOnClickListener {
